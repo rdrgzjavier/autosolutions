@@ -11,22 +11,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <!-- Tailwind -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#ab0014',
-                        whatsapp: '#25D366',
-                    },
-                    fontFamily: {
-                        headline: ['Space Grotesk', 'sans-serif'],
-                        body: ['Inter', 'sans-serif'],
-                    }
+<script id="tailwind-config">tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#ab0014',
+                    whatsapp: '#25D366'
+                },
+                fontFamily: {
+                    headline: ['Space Grotesk', 'sans-serif'],
+                    body: ['Inter', 'sans-serif'],
                 }
             }
         }
-    </script>
+    }</script>
 <style>
         .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
         .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
@@ -72,13 +70,13 @@
 <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/20"></div>
 <div class="relative z-10 w-full max-w-lg">
 <!-- Opening Status Widget -->
-<div class="inline-flex items-center gap-2 bg-black/30 backdrop-blur-md px-3 py-1.5 rounded-full mb-6 border border-white/10" id="status-widget">
-<span class="w-2 h-2 rounded-full" id="status-dot"></span>
-<span class="text-white text-[10px] font-bold uppercase tracking-wider" id="status-text">Comprobando horario...</span>
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold tracking-widest uppercase mb-6 shadow-sm" id="status-widget">
+<span aria-hidden="true" class="w-2.5 h-2.5 rounded-full bg-zinc-400" id="status-dot"></span>
+<span id="status-text">CARGANDO ESTADO...</span>
 </div>
-<h1 class="font-headline text-4xl font-bold text-white leading-tight mb-4">Tu Taller de Confianza en Las Rozas</h1>
+<h1 class="font-headline text-4xl font-bold text-white leading-tight mb-4">Tu taller de confianza en Las Rozas</h1>
 <div class="flex flex-col gap-2 mb-8">
-<p class="text-primary font-bold text-sm tracking-widest uppercase">15+ Años de Experiencia</p>
+<p class="text-white font-bold text-sm tracking-widest uppercase">+15 Años de Experiencia</p>
 <div class="flex items-center gap-2">
 <div aria-label="4.1 estrellas" class="flex text-yellow-400">
 <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
@@ -266,12 +264,12 @@
 </div>
 </footer>
 <!-- Bottom Navigation Bar -->
-<nav class="fixed bottom-0 left-0 w-full grid grid-cols-2 bg-white z-[90] pb-safe shadow-[0_-8px_20px_rgba(0,0,0,0.1)] border-t border-zinc-100" id="bottom-nav">
-<button class="flex flex-col items-center justify-center py-4 text-primary border-r border-zinc-100 active:bg-zinc-50" onclick="openBooking()">
+<nav class="fixed bottom-0 left-0 w-full grid grid-cols-2 bg-primary z-40 pb-safe shadow-[0_-8px_20px_rgba(0,0,0,0.2)]" id="bottom-nav">
+<button class="flex flex-col items-center justify-center py-4 text-white border-r border-white/10 active:bg-black/10 bg-primary" onclick="openBooking()">
 <span aria-hidden="true" class="material-symbols-outlined mb-1 text-2xl">calendar_month</span>
 <span class="text-[10px] uppercase tracking-widest font-bold">PEDIR CITA</span>
 </button>
-<a class="flex flex-col items-center justify-center py-4 text-whatsapp active:bg-zinc-50" href="https://wa.me/34696103730">
+<a class="flex flex-col items-center justify-center py-4 text-white active:bg-black/10" href="https://wa.me/34696103730">
 <span aria-hidden="true" class="material-symbols-outlined mb-1 text-2xl" style="font-variation-settings: 'FILL' 1;">chat</span>
 <span class="text-[10px] uppercase tracking-widest font-bold">WHATSAPP</span>
 </a>
@@ -443,7 +441,7 @@
             const featuresContainer = document.getElementById('info-features');
             featuresContainer.innerHTML = data.features.map(f => `
                 <div class="flex items-center gap-3 text-zinc-900 font-medium">
-                    <span class="material-symbols-outlined text-emerald-500 font-bold text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="material-symbols-outlined text-emerald-500 font-bold text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
                     ${f}
                 </div>
             `).join('');
@@ -455,22 +453,32 @@
             document.getElementById('info-modal').classList.remove('active');
         }
 
-        // Smart Status Widget Logic
+        // Smart Status Widget Logic - Updated for SCREEN_17 style
         function updateShopStatus() {
             const dot = document.getElementById('status-dot');
             const text = document.getElementById('status-text');
             const now = new Date();
             const day = now.getDay(); 
             const hour = now.getHours();
+            const minutes = now.getMinutes();
+            const currentTime = hour + (minutes / 60);
             
             const isOpenDay = day >= 1 && day <= 5;
-            const isOpenHour = hour >= 9 && hour < 18;
             
-            if (isOpenDay && isOpenHour) {
-                dot.className = "w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)]";
+            // Open: 09:00 - 17:30
+            // Closing Soon: 17:30 - 18:00
+            // Closed: Otherwise
+            
+            dot.classList.remove('bg-emerald-400', 'bg-yellow-400', 'bg-zinc-400', 'animate-pulse');
+
+            if (isOpenDay && currentTime >= 9 && currentTime < 17.5) {
+                dot.classList.add('bg-emerald-400', 'animate-pulse');
                 text.innerText = "ABIERTO AHORA • L-V 9:00 - 18:00";
+            } else if (isOpenDay && currentTime >= 17.5 && currentTime < 18) {
+                dot.classList.add('bg-yellow-400');
+                text.innerText = "CIERRA PRONTO • HASTA LAS 18:00";
             } else {
-                dot.className = "w-2 h-2 rounded-full bg-zinc-400";
+                dot.classList.add('bg-zinc-400');
                 text.innerText = "CERRADO AHORA • ABRE LUNES 9:00";
             }
         }
@@ -478,7 +486,9 @@
         // Bottom Nav visibility on scroll
         function handleBottomNav() {
             const bottomNav = document.getElementById('bottom-nav');
-            const heroHeight = document.getElementById('hero').offsetHeight;
+            const hero = document.getElementById('hero');
+            if (!hero) return;
+            const heroHeight = hero.offsetHeight;
             if (window.scrollY > (heroHeight - 100)) {
                 bottomNav.classList.add('visible');
             } else {
@@ -491,7 +501,7 @@
             updateShopStatus();
             setInterval(updateShopStatus, 60000);
             window.addEventListener('scroll', handleBottomNav);
-            handleBottomNav(); // Check initial position
+            handleBottomNav(); 
 
             // Close modals on background click
             window.onclick = function(event) {
