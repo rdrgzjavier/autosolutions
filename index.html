@@ -3,7 +3,7 @@
 <html class="light" lang="es"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Auto Solutions | Taller de Mecánica en Las Rozas</title>
+<title>Auto Solutions | Taller de coches en Las Rozas</title>
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <!-- Icons -->
@@ -43,8 +43,16 @@
         .hero-overlay {
             background: linear-gradient(to right, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 100%);
         }
-        #booking-modal:target {
+        /* Custom UI behaviors */
+        #booking-modal:target, #service-modal:target {
             display: flex;
+        }
+        .scroll-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scroll-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
 </head>
@@ -57,19 +65,19 @@
 <div aria-hidden="true" class="w-8 h-8 bg-primary rounded flex items-center justify-center text-white">
 <span class="material-symbols-outlined text-xl font-bold">handyman</span>
 </div>
-<span class="text-xl font-bold tracking-tighter text-zinc-900 font-headline uppercase">Auto Solutions</span>
+<span class="text-xl font-bold tracking-tighter text-zinc-900 font-headline">Auto Solutions</span>
 </a>
 <!-- Navigation Links (Desktop) -->
 <div class="hidden md:flex items-center space-x-8 font-headline">
-<a class="text-zinc-700 hover:text-primary transition-all text-sm font-bold uppercase tracking-wider relative group pb-1" href="#servicios" title="Nuestros servicios de taller">
+<a class="text-zinc-700 hover:text-primary transition-all text-sm font-bold lowercase tracking-wider relative group pb-1" href="#servicios" title="Nuestros servicios de taller">
                     Servicios
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
 </a>
-<a class="text-zinc-700 hover:text-primary transition-all text-sm font-bold uppercase tracking-wider relative group pb-1" href="#confiar" title="Por qué elegirnos">
+<a class="text-zinc-700 hover:text-primary transition-all text-sm font-bold lowercase tracking-wider relative group pb-1" href="#confiar" title="Por qué elegirnos">
                     Quiénes Somos
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
 </a>
-<a class="text-zinc-700 hover:text-primary transition-all text-sm font-bold uppercase tracking-wider relative group pb-1" href="#visitanos" title="Ubicación y contacto">
+<a class="text-zinc-700 hover:text-primary transition-all text-sm font-bold lowercase tracking-wider relative group pb-1" href="#visitanos" title="Ubicación y contacto">
                     Contacto
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
 </a>
@@ -93,11 +101,11 @@
 </div>
 <div class="relative z-10 px-8 md:px-16 w-full">
 <div class="max-w-3xl">
-<!-- Status Badge -->
-<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold tracking-widest uppercase mb-6">
-<span aria-hidden="true" class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                            ABIERTO AHORA • L-V 9:00 - 18:00
-                        </div>
+<!-- Status Badge (Dynamic) -->
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold tracking-widest uppercase mb-6" id="status-widget">
+<span aria-hidden="true" class="w-2.5 h-2.5 rounded-full bg-zinc-400" id="status-dot"></span>
+<span id="status-text">CARGANDO ESTADO...</span>
+</div>
 <h1 class="font-headline text-5xl md:text-7xl font-bold text-white tracking-tighter mb-6 leading-[1.1] drop-shadow-md">
                             Tu Taller de <span class="text-primary-container">Confianza</span> en Las Rozas.
                         </h1>
@@ -128,7 +136,7 @@
 </div>
 <div class="h-8 w-[1px] bg-white/20"></div>
 <div class="text-white">
-<span class="block text-xl font-bold drop-shadow-sm">15+ Años</span>
+<span class="block text-xl font-bold drop-shadow-sm">+15 Años</span>
 <span class="text-[10px] uppercase tracking-widest text-zinc-400 font-bold">De Experiencia</span>
 </div>
 </div>
@@ -156,7 +164,7 @@
 <div>
 <h3 class="font-headline text-xl font-bold mb-3">Aceite y Filtros</h3>
 <p class="text-sm text-on-surface-variant mb-6">Cambio preventivo para alargar la vida de tu motor.</p>
-<a class="text-xs font-bold text-primary tracking-widest uppercase flex items-center gap-2 cursor-pointer group-hover:gap-3 transition-all" href="#servicios">SABER MÁS <span aria-hidden="true" class="material-symbols-outlined text-sm">arrow_forward</span></a>
+<button aria-label="Saber más sobre Aceite y Filtros" class="text-xs font-bold text-primary tracking-widest uppercase flex items-center gap-2 cursor-pointer group-hover:gap-3 transition-all" onclick="openServiceModal('oil')">SABER MÁS <span aria-hidden="true" class="material-symbols-outlined text-sm">arrow_forward</span></button>
 </div>
 </div>
 </article>
@@ -167,7 +175,7 @@
 <div>
 <h3 class="font-headline text-xl font-bold mb-3">Sistema de Frenos</h3>
 <p class="text-sm text-on-surface-variant mb-6">Revisión de pastillas, discos y líquido de frenos.</p>
-<a class="text-xs font-bold text-primary tracking-widest uppercase flex items-center gap-2 cursor-pointer group-hover:gap-3 transition-all" href="#servicios">SABER MÁS <span aria-hidden="true" class="material-symbols-outlined text-sm">arrow_forward</span></a>
+<button aria-label="Saber más sobre Frenos" class="text-xs font-bold text-primary tracking-widest uppercase flex items-center gap-2 cursor-pointer group-hover:gap-3 transition-all" onclick="openServiceModal('brakes')">SABER MÁS <span aria-hidden="true" class="material-symbols-outlined text-sm">arrow_forward</span></button>
 </div>
 </div>
 </article>
@@ -178,7 +186,7 @@
 <div>
 <h3 class="font-headline text-xl font-bold mb-3">Neumáticos</h3>
 <p class="text-sm text-on-surface-variant mb-6">Equilibrado, alineación y cambio de las mejores marcas.</p>
-<a class="text-xs font-bold text-primary tracking-widest uppercase flex items-center gap-2 cursor-pointer group-hover:gap-3 transition-all" href="#servicios">VER OFERTAS <span aria-hidden="true" class="material-symbols-outlined text-sm">arrow_forward</span></a>
+<button aria-label="Ver ofertas en Neumáticos" class="text-xs font-bold text-primary tracking-widest uppercase flex items-center gap-2 cursor-pointer group-hover:gap-3 transition-all" onclick="openServiceModal('tires')">VER OFERTAS <span aria-hidden="true" class="material-symbols-outlined text-sm">arrow_forward</span></button>
 </div>
 </div>
 </article>
@@ -189,7 +197,7 @@
 <div>
 <h3 class="font-headline text-xl font-bold mb-3">Aire Acondicionado</h3>
 <p class="text-sm text-on-surface-variant mb-4">Carga de gas y desinfección de conductos para un confort total.</p>
-<a class="text-xs font-bold text-primary tracking-widest uppercase flex items-center gap-2 cursor-pointer group-hover:gap-3 transition-all" href="#servicios">SABER MÁS <span aria-hidden="true" class="material-symbols-outlined text-sm">arrow_forward</span></a>
+<button aria-label="Saber más sobre Aire Acondicionado" class="text-xs font-bold text-primary tracking-widest uppercase flex items-center gap-2 cursor-pointer group-hover:gap-3 transition-all" onclick="openServiceModal('ac')">SABER MÁS <span aria-hidden="true" class="material-symbols-outlined text-sm">arrow_forward</span></button>
 </div>
 </div>
 </article>
@@ -200,7 +208,7 @@
 <div>
 <h3 class="font-headline text-xl font-bold mb-3">Diagnosis y Baterías</h3>
 <p class="text-sm text-on-surface-variant mb-4">Comprobación de estado de carga y sustitución inmediata.</p>
-<a class="text-xs font-bold text-primary tracking-widest uppercase flex items-center gap-2 cursor-pointer group-hover:gap-3 transition-all" href="#servicios">SABER MÁS <span aria-hidden="true" class="material-symbols-outlined text-sm">arrow_forward</span></a>
+<button aria-label="Saber más sobre Baterías" class="text-xs font-bold text-primary tracking-widest uppercase flex items-center gap-2 cursor-pointer group-hover:gap-3 transition-all" onclick="openServiceModal('battery')">SABER MÁS <span aria-hidden="true" class="material-symbols-outlined text-sm">arrow_forward</span></button>
 </div>
 </div>
 </article>
@@ -302,19 +310,16 @@
 </div>
 </div>
 </div>
-<a class="w-full bg-zinc-900 hover:bg-zinc-800 text-white py-5 rounded-xl font-bold text-sm tracking-widest uppercase transition-all flex items-center justify-center gap-3 shadow-xl active:scale-95 no-underline" href="https://maps.google.com" rel="noopener noreferrer" target="_blank">
+<!-- How to arrive button -->
+<a class="w-full bg-zinc-900 hover:bg-zinc-800 text-white py-5 rounded-xl font-bold text-sm tracking-widest uppercase transition-all flex items-center justify-center gap-3 shadow-xl active:scale-95 no-underline" href="https://www.google.com/maps/dir/?api=1&amp;destination=Calle+Sofía+4+28232+Las+Rozas+de+Madrid" rel="noopener noreferrer" target="_blank">
 <span aria-hidden="true" class="material-symbols-outlined">directions</span>
                             CÓMO LLEGAR
                         </a>
 </div>
+<!-- Google Maps Functional Embed -->
 <div class="lg:col-span-7 aspect-video rounded-3xl overflow-hidden shadow-inner bg-zinc-100 relative border-4 border-white shadow-2xl">
-<img alt="Mapa de ubicación de Auto Solutions en el Polígono Európolis de Las Rozas" class="w-full h-full object-cover grayscale opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHn7_jmvu84a64gj2-7ZBwoKnchRdvtXHfMwJrZ33grj_2M3cStQA-dchuMse_rEgt6k60mNqQoO38F8qSLEVTiQGXaqiU_fQejyYrL1pA8yvTbC1f03CI0f7YO-8drlqXl_jji2ZgcA74-7gsc7dQ8q9etB3nCsu9YeMCCLy4tezTIXBzzefKfqg2EgDZy57fm6Qrbw6U61oFeYNFTrrWp2ow0pQKLiFf9gR4QIMWxvhTgfdvciSLV6fuC3zAR1JqlD3iN6ZMykI"/>
-<div class="absolute inset-0 flex items-center justify-center">
-<div class="bg-white px-6 py-4 rounded-2xl shadow-2xl border border-zinc-100 flex flex-col items-center">
-<span aria-hidden="true" class="material-symbols-outlined text-primary text-5xl mb-2" style='font-variation-settings: "FILL" 1;'>location_on</span>
-<p class="font-black text-sm uppercase tracking-tighter text-zinc-900">Auto Solutions</p>
-</div>
-</div>
+<iframe allowfullscreen="" height="100%" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3034.464670054817!2d-3.8967406!3d40.4871038!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd419b45e7519349%3A0x633d9876e65d21a!2sC.%20Sof%C3%ADa%2C%204%2C%2028232%20Las%20Rozas%20de%20Madrid%2C%20Spain!5e0!3m2!1sen!2sus!4v1715600000000!5m2!1sen!2sus" style="border:0;" title="Mapa de ubicación Auto Solutions" width="100%">
+</iframe>
 </div>
 </div>
 </div>
@@ -347,10 +352,10 @@
 <nav aria-label="Servicios populares">
 <h4 class="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-8">Servicios</h4>
 <ul class="space-y-4 text-sm font-medium">
-<li><a class="text-zinc-600 hover:text-primary transition-colors" href="#servicios">Mecánica Rápida</a></li>
-<li><a class="text-zinc-600 hover:text-primary transition-colors" href="#servicios">Electrónica</a></li>
-<li><a class="text-zinc-600 hover:text-primary transition-colors" href="#servicios">Pre-ITV</a></li>
-<li><a class="text-zinc-600 hover:text-primary transition-colors" href="#servicios">Frenos y Seguridad</a></li>
+<li><button class="text-zinc-600 hover:text-primary transition-colors text-left" onclick="openServiceModal('oil')">Mecánica Rápida</button></li>
+<li><button class="text-zinc-600 hover:text-primary transition-colors text-left" onclick="openServiceModal('battery')">Electrónica</button></li>
+<li><button class="text-zinc-600 hover:text-primary transition-colors text-left" onclick="openServiceModal('brakes')">Pre-ITV</button></li>
+<li><button class="text-zinc-600 hover:text-primary transition-colors text-left" onclick="openServiceModal('brakes')">Frenos y Seguridad</button></li>
 </ul>
 </nav>
 <!-- Company -->
@@ -386,46 +391,187 @@
 </div>
 </div>
 </footer>
-<!-- Messaging Bubble (Sticky) - Configurable for WhatsApp/others -->
-<a aria-label="Contactar por WhatsApp" class="fixed bottom-10 right-10 z-[100] bg-green-600 text-white px-6 py-4 rounded-full shadow-2xl hover:bg-green-700 transition-all hover:scale-110 active:scale-95 flex items-center gap-3 no-underline group" href="https://wa.me/34696103730" rel="noopener noreferrer" target="_blank">
+<!-- WhatsApp Button (Functional) -->
+<a aria-label="Contactar por WhatsApp" class="fixed bottom-10 right-10 z-[100] bg-green-600 text-white px-6 py-4 rounded-full shadow-2xl hover:bg-green-700 transition-all hover:scale-110 active:scale-95 flex items-center gap-3 no-underline group" href="https://wa.me/34696103730?text=Hola,%20me%20gustaría%20solicitar%20información%20sobre%20vuestros%20servicios." rel="noopener noreferrer" target="_blank">
 <span aria-hidden="true" class="material-symbols-outlined text-3xl">chat</span>
 <span class="font-bold tracking-tight text-sm hidden group-hover:block transition-all">WhatsApp</span>
 </a>
-<!-- Booking Modal Simulation -->
-<div aria-labelledby="modal-title" aria-modal="true" class="fixed inset-0 z-[110] hidden items-center justify-center bg-zinc-950/80 backdrop-blur-sm p-4" id="booking-modal" role="dialog">
-<div class="bg-white rounded-3xl max-w-lg w-full p-10 relative shadow-2xl">
+<!-- Booking Modal (Full Interactive Version) -->
+<div aria-labelledby="modal-title" aria-modal="true" class="fixed inset-0 z-[110] hidden items-center justify-center bg-zinc-950/80 backdrop-blur-sm p-4 overflow-y-auto" id="booking-modal" role="dialog">
+<div class="bg-white rounded-3xl max-w-2xl w-full p-8 md:p-10 relative shadow-2xl max-h-[90vh] flex flex-col">
 <a aria-label="Cerrar ventana" class="absolute top-6 right-6 text-zinc-400 hover:text-zinc-900 transition-colors" href="#">
 <span aria-hidden="true" class="material-symbols-outlined text-3xl">close</span>
 </a>
-<div class="text-center">
-<div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-<span aria-hidden="true" class="material-symbols-outlined text-primary text-4xl" style='font-variation-settings: "FILL" 1;'>calendar_month</span>
+<div class="overflow-y-auto scroll-hide">
+<div class="text-center mb-8">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+<span aria-hidden="true" class="material-symbols-outlined text-primary text-3xl" style='font-variation-settings: "FILL" 1;'>calendar_month</span>
 </div>
-<h3 class="font-headline text-3xl font-bold mb-4 text-zinc-900" id="modal-title">Reserva tu Cita</h3>
-<div class="space-y-4 text-left">
-<button aria-label="Reservar Mantenimiento y Aceite" class="w-full p-5 border-2 border-zinc-100 rounded-2xl hover:border-primary/40 transition-all flex justify-between items-center group bg-zinc-50/50">
+<h3 class="font-headline text-3xl font-bold text-zinc-900" id="modal-title">Reserva tu Cita</h3>
+<p class="text-zinc-500 text-sm mt-2">Selecciona la fecha y hora que mejor te convenga</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Calendar Placeholder Simulation -->
 <div>
-<p class="font-bold text-zinc-900">Mantenimiento y Aceite</p>
-<p class="text-xs text-zinc-500 font-medium mt-1 uppercase tracking-wider">Revisión general rápida</p>
+<p class="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-4">1. Selecciona Fecha</p>
+<div class="bg-zinc-50 border border-zinc-100 rounded-2xl p-4">
+<div class="flex justify-between items-center mb-4">
+<span class="font-bold text-zinc-900">Mayo 2024</span>
+<div class="flex gap-2">
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-zinc-200"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-zinc-200"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
 </div>
-<span aria-hidden="true" class="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
-</button>
-<button aria-label="Reservar Diagnosis o Avería" class="w-full p-5 border-2 border-zinc-100 rounded-2xl hover:border-primary/40 transition-all flex justify-between items-center group bg-zinc-50/50">
+</div>
+<div class="grid grid-cols-7 gap-1 text-center text-[10px] font-bold text-zinc-400 mb-2">
+<div>L</div><div>M</div><div>M</div><div>J</div><div>V</div><div>S</div><div>D</div>
+</div>
+<div class="grid grid-cols-7 gap-1">
+<!-- Minimal calendar mock -->
+<div class="aspect-square flex items-center justify-center text-zinc-300">29</div>
+<div class="aspect-square flex items-center justify-center text-zinc-300">30</div>
+<div class="aspect-square flex items-center justify-center bg-primary text-white rounded-lg font-bold shadow-md cursor-pointer">1</div>
+<div class="aspect-square flex items-center justify-center hover:bg-zinc-200 rounded-lg cursor-pointer">2</div>
+<div class="aspect-square flex items-center justify-center hover:bg-zinc-200 rounded-lg cursor-pointer">3</div>
+<div class="aspect-square flex items-center justify-center text-zinc-300">4</div>
+<div class="aspect-square flex items-center justify-center text-zinc-300">5</div>
+<div class="aspect-square flex items-center justify-center hover:bg-zinc-200 rounded-lg cursor-pointer font-bold">6</div>
+<div class="aspect-square flex items-center justify-center hover:bg-zinc-200 rounded-lg cursor-pointer font-bold">7</div>
+<div class="aspect-square flex items-center justify-center hover:bg-zinc-200 rounded-lg cursor-pointer font-bold">8</div>
+<div class="aspect-square flex items-center justify-center hover:bg-zinc-200 rounded-lg cursor-pointer font-bold">9</div>
+<div class="aspect-square flex items-center justify-center hover:bg-zinc-200 rounded-lg cursor-pointer font-bold">10</div>
+<div class="aspect-square flex items-center justify-center text-zinc-300">11</div>
+<div class="aspect-square flex items-center justify-center text-zinc-300">12</div>
+</div>
+</div>
+</div>
+<!-- Time Slots -->
 <div>
-<p class="font-bold text-zinc-900">Diagnosis o Avería</p>
-<p class="text-xs text-zinc-500 font-medium mt-1 uppercase tracking-wider">Lectura de fallos electrónica</p>
+<p class="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-4">2. Horarios Disponibles</p>
+<div class="grid grid-cols-2 gap-3">
+<button class="py-3 border-2 border-primary rounded-xl text-primary font-bold text-sm bg-primary/5">09:00</button>
+<button class="py-3 border-2 border-zinc-100 rounded-xl text-zinc-600 font-bold text-sm hover:border-zinc-300 transition-colors">10:30</button>
+<button class="py-3 border-2 border-zinc-100 rounded-xl text-zinc-600 font-bold text-sm hover:border-zinc-300 transition-colors">12:00</button>
+<button class="py-3 border-2 border-zinc-100 rounded-xl text-zinc-600 font-bold text-sm hover:border-zinc-300 transition-colors">13:30</button>
+<button class="py-3 border-2 border-zinc-100 rounded-xl text-zinc-300 font-bold text-sm cursor-not-allowed line-through" disabled="">16:00</button>
+<button class="py-3 border-2 border-zinc-100 rounded-xl text-zinc-600 font-bold text-sm hover:border-zinc-300 transition-colors">17:00</button>
 </div>
-<span aria-hidden="true" class="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</div>
+</div>
+<div class="mt-10 border-t border-zinc-100 pt-8">
+<button class="w-full bg-primary hover:bg-primary-container text-on-primary py-5 rounded-xl font-bold tracking-widest uppercase transition-all shadow-xl active:scale-[0.98]">
+                        CONFIRMAR CITA PARA EL 1 DE MAYO
+                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Dynamic Service Information Modal -->
+<div aria-labelledby="service-title" aria-modal="true" class="fixed inset-0 z-[110] hidden items-center justify-center bg-zinc-950/80 backdrop-blur-sm p-4" id="service-modal" role="dialog">
+<div class="bg-white rounded-3xl max-w-xl w-full p-8 md:p-12 relative shadow-2xl">
+<button aria-label="Cerrar detalle de servicio" class="absolute top-6 right-6 text-zinc-400 hover:text-zinc-900 transition-colors" onclick="window.location.hash = '#'">
+<span aria-hidden="true" class="material-symbols-outlined text-3xl">close</span>
 </button>
-<button aria-label="Reservar Pre-ITV / Frenos" class="w-full p-5 border-2 border-zinc-100 rounded-2xl hover:border-primary/40 transition-all flex justify-between items-center group bg-zinc-50/50">
-<div>
-<p class="font-bold text-zinc-900">Pre-ITV / Frenos</p>
-<p class="text-xs text-zinc-500 font-medium mt-1 uppercase tracking-wider">Seguridad y documentación</p>
-</div>
-<span aria-hidden="true" class="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
-</button>
+<div id="service-modal-content">
+<!-- Content injected via JS -->
 </div>
 </div>
 </div>
-</div>
+<script>
+        // 1. Smart Status Widget Logic
+        function updateWorkshopStatus() {
+            const statusDot = document.getElementById('status-dot');
+            const statusText = document.getElementById('status-text');
+            const now = new Date();
+            const day = now.getDay(); // 0 (Sun) to 6 (Sat)
+            const hour = now.getHours();
+            
+            // Workshop: Mon-Fri 09:00 - 18:00
+            const isOpenDay = day >= 1 && day <= 5;
+            const isOpenHour = hour >= 9 && hour < 18;
+            
+            if (isOpenDay && isOpenHour) {
+                statusDot.classList.replace('bg-zinc-400', 'bg-emerald-400');
+                statusDot.classList.add('animate-pulse');
+                statusText.innerText = 'ABIERTO AHORA • L-V 9:00 - 18:00';
+            } else {
+                statusDot.classList.replace('bg-emerald-400', 'bg-zinc-400');
+                statusDot.classList.remove('animate-pulse');
+                statusText.innerText = 'CERRADO AHORA • ABRE LUNES 9:00';
+            }
+        }
+
+        // 2. Service Modal Logic
+        const servicesData = {
+            oil: {
+                title: "Aceite y Filtros",
+                icon: "oil_barrel",
+                desc: "Mantenimiento preventivo esencial para garantizar la lubricación óptima de los componentes internos del motor. Incluye vaciado de aceite viejo, sustitución de filtro y niveles de cortesía.",
+                features: ["Aceite sintético Premium", "Filtros certificados", "Revisión de 15 puntos"]
+            },
+            brakes: {
+                title: "Sistema de Frenos",
+                icon: "album",
+                desc: "Seguridad ante todo. Inspeccionamos el desgaste de pastillas y discos, comprobamos el punto de ebullición del líquido de frenos y garantizamos una frenada equilibrada.",
+                features: ["Sustitución de pastillas", "Rectificado de discos", "Purga de circuito"]
+            },
+            tires: {
+                title: "Neumáticos y Alineación",
+                icon: "tire_repair",
+                desc: "Trabajamos con las mejores marcas del mercado. Aseguramos el agarre perfecto y un desgaste uniforme mediante alineación 3D computarizada.",
+                features: ["Montaje y equilibrado", "Alineación 3D", "Inflado con Nitrógeno"]
+            },
+            ac: {
+                title: "Aire Acondicionado",
+                icon: "ac_unit",
+                desc: "Carga de gas R134a o nuevo gas R1234yf. Desinfección de conductos con ozono para eliminar olores y bacterias en el habitáculo.",
+                features: ["Recarga de gas", "Detección de fugas", "Tratamiento anti-bacterias"]
+            },
+            battery: {
+                title: "Diagnosis y Baterías",
+                icon: "battery_charging_80",
+                desc: "Localización de averías electrónicas compleja y sustitución de baterías de alta capacidad. Diagnosis avanzada para todos los sistemas del vehículo.",
+                features: ["Borrado de errores", "Test de alternador", "Instalación incluida"]
+            }
+        };
+
+        function openServiceModal(serviceKey) {
+            const data = servicesData[serviceKey];
+            const container = document.getElementById('service-modal-content');
+            
+            container.innerHTML = `
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center text-white">
+                        <span class="material-symbols-outlined text-3xl">${data.icon}</span>
+                    </div>
+                    <h3 id="service-title" class="font-headline text-3xl font-bold text-zinc-900">${data.title}</h3>
+                </div>
+                <p class="text-zinc-600 text-lg leading-relaxed mb-8">${data.desc}</p>
+                <div class="space-y-3 mb-10">
+                    ${data.features.map(f => `
+                        <div class="flex items-center gap-3 text-zinc-900 font-medium">
+                            <span class="material-symbols-outlined text-emerald-500 font-bold">check_circle</span>
+                            ${f}
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#booking-modal" class="bg-primary hover:bg-primary-container text-on-primary px-8 py-4 rounded-xl font-bold text-sm text-center transition-all flex-1">
+                        PEDIR CITA PARA ESTE SERVICIO
+                    </a>
+                </div>
+            `;
+            window.location.hash = 'service-modal';
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            updateWorkshopStatus();
+            // Optional: Close modals when clicking overlay
+            document.querySelectorAll('[aria-modal="true"]').forEach(modal => {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) window.location.hash = '#';
+                });
+            });
+        });
+    </script>
 </body></html>
