@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Auto Solutions | Taller de Mecánica en Las Rozas</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface": "#f9f9f9",
+                        "primary": "#ab0014",
+                        "primary-container": "#d22026",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#1a1c1c",
+                        "on-surface-variant": "#5c403d",
+                        "outline": "#916f6c",
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .text-shadow-strong {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8), 0 4px 12px rgba(0,0,0,0.5);
+        }
+        .hero-overlay {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 100%);
+        }
+        #booking-modal:target {
+            display: flex;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- Header & Navigation -->
+<header class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-zinc-200">
+<nav aria-label="Navegación principal" class="flex justify-between items-center h-16 px-6 lg:px-12 max-w-screen-2xl mx-auto">
+<!-- Brand Logo -->
+<a class="flex items-center gap-2 group" href="/" title="Ir a inicio - Auto Solutions">
+<div aria-hidden="true" class="w-8 h-8 bg-primary rounded flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-xl font-bold">handyman</span>
+</div>
+<span class="text-xl font-bold tracking-tighter text-zinc-900 font-headline uppercase">Auto Solutions</span>
+</a>
+<!-- Navigation Links (Desktop) -->
+<div class="hidden md:flex items-center space-x-8 font-headline">
+<a class="text-zinc-700 hover:text-primary transition-all text-sm font-bold uppercase tracking-wider relative group pb-1" href="#servicios" title="Nuestros servicios de taller">
+                    Servicios
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+</a>
+<a class="text-zinc-700 hover:text-primary transition-all text-sm font-bold uppercase tracking-wider relative group pb-1" href="#confiar" title="Por qué elegirnos">
+                    Quiénes Somos
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+</a>
+<a class="text-zinc-700 hover:text-primary transition-all text-sm font-bold uppercase tracking-wider relative group pb-1" href="#visitanos" title="Ubicación y contacto">
+                    Contacto
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+</a>
+</div>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-6">
+<a aria-label="Llamar a Auto Solutions al 696 10 37 30" class="flex items-center gap-2 text-primary font-bold transition-transform active:scale-95 no-underline hover:no-underline group" href="tel:696103730">
+<span aria-hidden="true" class="material-symbols-outlined text-xl">call</span>
+<span class="text-base tracking-tight">696 10 37 30</span>
+</a>
+</div>
+</nav>
+</header>
+<main>
+<!-- Hero Section - Contained Rectangle -->
+<section class="pt-24 pb-8 px-6 lg:px-12">
+<div class="max-w-7xl mx-auto relative min-h-[600px] flex items-center overflow-hidden rounded-3xl shadow-2xl">
+<div class="absolute inset-0 z-0">
+<img alt="Mecánico experto trabajando con precisión en el motor de un coche de alta gama" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCuuYwFgtTqwVNA5YuiEr5tYV7_uU4ZqJCDN0U6GRCSDR98xuJCWHg4tconbFU9gaLzysAWIpphXJIVsVlaAffZM8uX85lfuHy1mSppWka87cdSSEoS7h73GVsk-IzmaWVKsnnhcb3pHmDXX0yohJWAC5zXmV_D25Np8Bbaxm4g_Y5xJc_9rBWBEC0aoIvhOXKL_iBZxDNOly5zJy-y3Jmby7pkRyIO8lNXfAifWkeSmDVcDqDJKKRj3LLnq0xAuSwY148XPFCd18"/>
+<div class="absolute inset-0 hero-overlay"></div>
+</div>
+<div class="relative z-10 px-8 md:px-16 w-full">
+<div class="max-w-3xl">
+<!-- Status Badge -->
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold tracking-widest uppercase mb-6">
+<span aria-hidden="true" class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                            ABIERTO AHORA • L-V 9:00 - 18:00
+                        </div>
+<h1 class="font-headline text-5xl md:text-7xl font-bold text-white tracking-tighter mb-6 leading-[1.1] drop-shadow-md">
+                            Tu Taller de <span class="text-primary-container">Confianza</span> en Las Rozas.
+                        </h1>
+<p class="text-zinc-200 text-lg md:text-xl mb-10 leading-relaxed font-normal drop-shadow-sm max-w-2xl">
+                            Reparamos tu coche hoy mismo con ingeniería de precisión. Transparencia total y rapidez garantizada en el Polígono Európolis.
+                        </p>
+<div class="flex flex-col sm:flex-row gap-5">
+<a class="bg-primary hover:bg-primary-container text-on-primary px-10 py-4 rounded font-bold text-sm tracking-tight transition-all flex items-center justify-center gap-2 group shadow-lg active:scale-95" href="#booking-modal" title="Reservar cita mecánica online">
+<span aria-hidden="true" class="material-symbols-outlined text-xl">calendar_month</span>
+                                PEDIR CITA ONLINE
+                            </a>
+<a aria-label="Llamar por teléfono" class="bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 text-white px-10 py-4 rounded font-bold text-sm tracking-tight transition-all flex items-center justify-center gap-2 no-underline" href="tel:696103730">
+<span aria-hidden="true" class="material-symbols-outlined text-xl">call</span>
+                                696 10 37 30
+                            </a>
+</div>
+<!-- Social Proof -->
+<div class="mt-12 flex items-center gap-8">
+<div class="flex flex-col">
+<div aria-label="Valoración de 4.1 estrellas sobre 5" class="flex text-yellow-400 gap-0.5">
+<span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>star</span>
+<span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>star</span>
+<span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>star</span>
+<span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>star</span>
+<span class="material-symbols-outlined" style='font-variation-settings: "FILL" 0;'>star_half</span>
+</div>
+<span class="text-white text-xs mt-1 font-medium drop-shadow-sm">4,1/5 Valoración Google</span>
+</div>
+<div class="h-8 w-[1px] bg-white/20"></div>
+<div class="text-white">
+<span class="block text-xl font-bold drop-shadow-sm">15+ Años</span>
+<span class="text-[10px] uppercase tracking-widest text-zinc-400 font-bold">De Experiencia</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Section -->
+<section class="py-24 bg-surface px-8" id="servicios">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+<div>
+<span class="text-primary font-bold text-xs tracking-widest uppercase mb-2 block">Nuestra Especialidad</span>
+<h2 class="font-headline text-4xl font-bold tracking-tighter text-on-surface">Servicios de Mantenimiento Rápido</h2>
+</div>
+<p class="text-on-surface-variant max-w-md text-sm leading-relaxed">
+                        Utilizamos recambios originales y maquinaria de última generación para asegurar que tu vehículo vuelva a la carretera en condiciones óptimas.
+                    </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-6 gap-6">
+<!-- Oil Service -->
+<article class="md:col-span-2 bg-white border border-zinc-100 p-8 rounded-xl group hover:border-primary/20 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-zinc-200/50">
+<div class="flex items-start gap-6">
+<span aria-hidden="true" class="material-symbols-outlined text-4xl text-primary group-hover:scale-110 transition-transform duration-300 text-center origin-center">oil_barrel</span>
+<div>
+<h3 class="font-headline text-xl font-bold mb-3">Aceite y Filtros</h3>
+<p class="text-sm text-on-surface-variant mb-6">Cambio preventivo para alargar la vida de tu motor.</p>
+<a class="text-xs font-bold text-primary tracking-widest uppercase flex items-center gap-2 cursor-pointer group-hover:gap-3 transition-all" href="#servicios">SABER MÁS <span aria-hidden="true" class="material-symbols-outlined text-sm">arrow_forward</span></a>
+</div>
+</div>
+</article>
+<!-- Brakes -->
+<article class="md:col-span-2 bg-white border border-zinc-100 p-8 rounded-xl group hover:border-primary/20 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-zinc-200/50">
+<div class="flex items-start gap-6">
+<span aria-hidden="true" class="material-symbols-outlined text-4xl text-primary group-hover:scale-110 transition-transform duration-300 text-center origin-center">album</span>
+<div>
+<h3 class="font-headline text-xl font-bold mb-3">Sistema de Frenos</h3>
+<p class="text-sm text-on-surface-variant mb-6">Revisión de pastillas, discos y líquido de frenos.</p>
+<a class="text-xs font-bold text-primary tracking-widest uppercase flex items-center gap-2 cursor-pointer group-hover:gap-3 transition-all" href="#servicios">SABER MÁS <span aria-hidden="true" class="material-symbols-outlined text-sm">arrow_forward</span></a>
+</div>
+</div>
+</article>
+<!-- Tires -->
+<article class="md:col-span-2 bg-white border border-zinc-100 p-8 rounded-xl group hover:border-primary/20 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-zinc-200/50">
+<div class="flex items-start gap-6">
+<span aria-hidden="true" class="material-symbols-outlined text-4xl text-primary group-hover:scale-110 transition-transform duration-300 text-center origin-center">tire_repair</span>
+<div>
+<h3 class="font-headline text-xl font-bold mb-3">Neumáticos</h3>
+<p class="text-sm text-on-surface-variant mb-6">Equilibrado, alineación y cambio de las mejores marcas.</p>
+<a class="text-xs font-bold text-primary tracking-widest uppercase flex items-center gap-2 cursor-pointer group-hover:gap-3 transition-all" href="#servicios">VER OFERTAS <span aria-hidden="true" class="material-symbols-outlined text-sm">arrow_forward</span></a>
+</div>
+</div>
+</article>
+<!-- AC -->
+<article class="md:col-span-3 bg-white border border-zinc-100 p-8 rounded-xl group hover:border-primary/20 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-zinc-200/50">
+<div class="flex items-start gap-6">
+<span aria-hidden="true" class="material-symbols-outlined text-4xl text-primary group-hover:scale-110 transition-transform duration-300 text-center origin-center">ac_unit</span>
+<div>
+<h3 class="font-headline text-xl font-bold mb-3">Aire Acondicionado</h3>
+<p class="text-sm text-on-surface-variant mb-4">Carga de gas y desinfección de conductos para un confort total.</p>
+<a class="text-xs font-bold text-primary tracking-widest uppercase flex items-center gap-2 cursor-pointer group-hover:gap-3 transition-all" href="#servicios">SABER MÁS <span aria-hidden="true" class="material-symbols-outlined text-sm">arrow_forward</span></a>
+</div>
+</div>
+</article>
+<!-- Batteries -->
+<article class="md:col-span-3 bg-white border border-zinc-100 p-8 rounded-xl group hover:border-primary/20 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-zinc-200/50">
+<div class="flex items-start gap-6">
+<span aria-hidden="true" class="material-symbols-outlined text-4xl text-primary group-hover:scale-110 transition-transform duration-300 text-center origin-center">battery_charging_80</span>
+<div>
+<h3 class="font-headline text-xl font-bold mb-3">Diagnosis y Baterías</h3>
+<p class="text-sm text-on-surface-variant mb-4">Comprobación de estado de carga y sustitución inmediata.</p>
+<a class="text-xs font-bold text-primary tracking-widest uppercase flex items-center gap-2 cursor-pointer group-hover:gap-3 transition-all" href="#servicios">SABER MÁS <span aria-hidden="true" class="material-symbols-outlined text-sm">arrow_forward</span></a>
+</div>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- Trust Section -->
+<section class="py-24 bg-zinc-50 px-8 border-y border-zinc-200" id="confiar">
+<div class="max-w-7xl mx-auto">
+<h2 class="font-headline text-4xl font-bold tracking-tighter text-on-surface mb-16">¿Por qué confiar en Auto Solutions?</h2>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<!-- Left side: Image -->
+<div class="relative">
+<div class="rounded-3xl overflow-hidden shadow-2xl relative group max-w-lg mx-auto lg:mx-0">
+<img alt="Mecánico profesional trabajando en el motor de un coche con herramientas de precisión" class="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVHm0W8E_HXumkbPANXJ-WWY_89hkp42R9ZY6SXAAQpwhLkqVJB1l5GLQr8Uoa7v8PuXmjp6DI6kiUpWuyx9rDQlC3RfeGe2Lb6KDHqijVEbDHJIeqD2vtq4ViFlhElZNm-DFp_48yofuj4OtY7Kc3avlxwIjR29x8q3jsWuah4CZG9mLGFkS_3g5GFcm9gQUhg2SpCU4DsG9Gh1Uqn_MdAlrn9L69Tj9vqcwXJ8OeQ6Ql4kqVtfmplwgsVyZFOjHBK495qfb95vg"/>
+<div class="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md p-5 rounded-2xl border border-white shadow-xl">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span aria-hidden="true" class="material-symbols-outlined text-2xl" style='font-variation-settings: "FILL" 1;'>verified</span>
+</div>
+<div>
+<p class="font-bold text-sm text-zinc-900 leading-tight">Calidad Certificada</p>
+<p class="text-[10px] text-primary font-bold uppercase tracking-widest mt-0.5">Taller Multimarca Premium</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right side: Features & CTAs -->
+<div class="space-y-12">
+<div class="space-y-10">
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-12 h-12 rounded-xl bg-white border border-zinc-200 flex items-center justify-center shadow-sm">
+<span aria-hidden="true" class="material-symbols-outlined text-primary text-2xl">speed</span>
+</div>
+<div>
+<h4 class="font-bold text-xl text-zinc-900 mb-2">Rapidez en el Servicio</h4>
+<p class="text-zinc-600 leading-relaxed text-sm">Entendemos que tu tiempo es oro. La mayoría de los mantenimientos programados se completan en el mismo día.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-12 h-12 rounded-xl bg-white border border-zinc-200 flex items-center justify-center shadow-sm">
+<span aria-hidden="true" class="material-symbols-outlined text-primary text-2xl">search_check</span>
+</div>
+<div>
+<h4 class="font-bold text-xl text-zinc-900 mb-2">Transparencia de Costes</h4>
+<p class="text-zinc-600 leading-relaxed text-sm">Presupuesto cerrado antes de empezar. Sin sorpresas finales ni reparaciones no autorizadas por escrito.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-12 h-12 rounded-xl bg-white border border-zinc-200 flex items-center justify-center shadow-sm">
+<span aria-hidden="true" class="material-symbols-outlined text-primary text-2xl">location_on</span>
+</div>
+<div>
+<h4 class="font-bold text-xl text-zinc-900 mb-2">Ubicación Estratégica</h4>
+<p class="text-zinc-600 leading-relaxed text-sm">Situados en Európolis, Las Rozas. Fácil acceso y aparcamiento gratuito dedicado para todos nuestros clientes.</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row gap-6 pt-6 items-center">
+<a class="bg-primary hover:bg-primary-container text-on-primary px-10 py-5 rounded-xl font-bold text-sm tracking-widest uppercase transition-all shadow-xl shadow-primary/20 text-center flex-1 flex items-center justify-center gap-3 active:scale-95" href="#booking-modal">
+<span aria-hidden="true" class="material-symbols-outlined text-2xl">calendar_today</span>
+                                PEDIR CITA ONLINE
+                            </a>
+<a aria-label="Llamar al taller" class="flex-1 flex items-center justify-center gap-3 text-zinc-900 font-bold no-underline px-10 py-5 rounded-xl border-2 border-zinc-200 hover:border-primary transition-colors" href="tel:696103730">
+<span aria-hidden="true" class="material-symbols-outlined text-2xl text-primary">call</span>
+<span class="text-lg">696 10 37 30</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Visit Us Section -->
+<section class="py-24 bg-white px-8" id="visitanos">
+<div class="max-w-7xl mx-auto">
+<h2 class="font-headline text-4xl font-bold tracking-tighter text-on-surface mb-12">Visítanos en Las Rozas</h2>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start lg:items-center">
+<div class="lg:col-span-5 flex flex-col">
+<div class="space-y-10 mb-12">
+<div class="flex items-start gap-6">
+<span aria-hidden="true" class="material-symbols-outlined text-primary text-3xl mt-1">pin_drop</span>
+<div>
+<p class="font-bold text-xl text-zinc-900 mb-1">Dirección</p>
+<address class="not-italic text-zinc-600 text-lg leading-relaxed">
+                                        Calle Sofía, 4<br/>
+                                        28232 Las Rozas, Madrid
+                                    </address>
+</div>
+</div>
+<div class="flex items-start gap-6">
+<span aria-hidden="true" class="material-symbols-outlined text-primary text-3xl mt-1">schedule</span>
+<div>
+<p class="font-bold text-xl text-zinc-900 mb-1">Horario de Taller</p>
+<p class="text-zinc-600 text-lg leading-relaxed">
+                                        Lunes a Viernes: 09:00 – 18:00<br/>
+                                        Sábados y Domingos: Cerrado
+                                    </p>
+</div>
+</div>
+</div>
+<a class="w-full bg-zinc-900 hover:bg-zinc-800 text-white py-5 rounded-xl font-bold text-sm tracking-widest uppercase transition-all flex items-center justify-center gap-3 shadow-xl active:scale-95 no-underline" href="https://maps.google.com" rel="noopener noreferrer" target="_blank">
+<span aria-hidden="true" class="material-symbols-outlined">directions</span>
+                            CÓMO LLEGAR
+                        </a>
+</div>
+<div class="lg:col-span-7 aspect-video rounded-3xl overflow-hidden shadow-inner bg-zinc-100 relative border-4 border-white shadow-2xl">
+<img alt="Mapa de ubicación de Auto Solutions en el Polígono Európolis de Las Rozas" class="w-full h-full object-cover grayscale opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHn7_jmvu84a64gj2-7ZBwoKnchRdvtXHfMwJrZ33grj_2M3cStQA-dchuMse_rEgt6k60mNqQoO38F8qSLEVTiQGXaqiU_fQejyYrL1pA8yvTbC1f03CI0f7YO-8drlqXl_jji2ZgcA74-7gsc7dQ8q9etB3nCsu9YeMCCLy4tezTIXBzzefKfqg2EgDZy57fm6Qrbw6U61oFeYNFTrrWp2ow0pQKLiFf9gR4QIMWxvhTgfdvciSLV6fuC3zAR1JqlD3iN6ZMykI"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-white px-6 py-4 rounded-2xl shadow-2xl border border-zinc-100 flex flex-col items-center">
+<span aria-hidden="true" class="material-symbols-outlined text-primary text-5xl mb-2" style='font-variation-settings: "FILL" 1;'>location_on</span>
+<p class="font-black text-sm uppercase tracking-tighter text-zinc-900">Auto Solutions</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-zinc-200 bg-zinc-100 text-zinc-900">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 py-20 px-8 max-w-7xl mx-auto">
+<!-- Brand -->
+<div class="space-y-6">
+<a class="flex items-center gap-2 group" href="/" title="Ir a inicio - Auto Solutions">
+<div aria-hidden="true" class="w-8 h-8 bg-primary rounded flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-xl font-bold">handyman</span>
+</div>
+<span class="text-xl font-bold tracking-tighter text-zinc-900 font-headline uppercase">Auto Solutions</span>
+</a>
+<p class="text-xs text-zinc-600 leading-relaxed font-medium">
+                    Ingeniería de precisión y cuidado experto para tu vehículo en el corazón de Las Rozas desde hace más de 15 años.
+                </p>
+<div class="flex gap-4 pt-2">
+<a aria-label="Síguenos en Facebook" class="text-zinc-500 hover:text-primary transition-colors" href="#">
+<span aria-hidden="true" class="material-symbols-outlined text-2xl">social_leaderboard</span>
+</a>
+<a aria-label="Lee nuestras reseñas en Google" class="text-zinc-500 hover:text-primary transition-colors" href="#">
+<span aria-hidden="true" class="material-symbols-outlined text-2xl">share_reviews</span>
+</a>
+</div>
+</div>
+<!-- Services -->
+<nav aria-label="Servicios populares">
+<h4 class="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-8">Servicios</h4>
+<ul class="space-y-4 text-sm font-medium">
+<li><a class="text-zinc-600 hover:text-primary transition-colors" href="#servicios">Mecánica Rápida</a></li>
+<li><a class="text-zinc-600 hover:text-primary transition-colors" href="#servicios">Electrónica</a></li>
+<li><a class="text-zinc-600 hover:text-primary transition-colors" href="#servicios">Pre-ITV</a></li>
+<li><a class="text-zinc-600 hover:text-primary transition-colors" href="#servicios">Frenos y Seguridad</a></li>
+</ul>
+</nav>
+<!-- Company -->
+<nav aria-label="Información corporativa">
+<h4 class="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-8">Empresa</h4>
+<ul class="space-y-4 text-sm font-medium">
+<li><a class="text-zinc-600 hover:text-primary transition-colors" href="#confiar">Quiénes Somos</a></li>
+<li><a class="text-zinc-600 hover:text-primary transition-colors" href="#visitanos">Contacto</a></li>
+<li><a class="text-zinc-600 hover:text-primary transition-colors" href="#">Aviso Legal</a></li>
+<li><a class="text-zinc-600 hover:text-primary transition-colors" href="#">Privacidad</a></li>
+</ul>
+</nav>
+<!-- Contact -->
+<div class="space-y-8">
+<h4 class="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-8">Contacto Directo</h4>
+<div class="flex items-center gap-4">
+<span aria-hidden="true" class="material-symbols-outlined text-primary text-2xl">call</span>
+<a aria-label="Llamar al taller" class="text-base font-bold text-zinc-700 hover:text-primary transition-colors no-underline" href="tel:696103730">696 10 37 30</a>
+</div>
+<div class="flex items-center gap-4">
+<span aria-hidden="true" class="material-symbols-outlined text-2xl text-primary">location_on</span>
+<span class="text-sm font-medium text-zinc-600">Las Rozas (Európolis), Madrid</span>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 pb-12">
+<div class="pt-8 border-t border-zinc-200 flex flex-col md:flex-row justify-between items-center gap-6">
+<p class="text-xs text-zinc-500 font-medium">© 2024 Auto Solutions Car Service. Ingeniería de Precisión.</p>
+<div class="flex gap-8 text-xs text-zinc-500 font-medium">
+<a class="hover:text-primary transition-colors" href="#">Aviso Legal</a>
+<a class="hover:text-primary transition-colors" href="#">Cookies</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- Messaging Bubble (Sticky) - Configurable for WhatsApp/others -->
+<a aria-label="Contactar por WhatsApp" class="fixed bottom-10 right-10 z-[100] bg-green-600 text-white px-6 py-4 rounded-full shadow-2xl hover:bg-green-700 transition-all hover:scale-110 active:scale-95 flex items-center gap-3 no-underline group" href="https://wa.me/34696103730" rel="noopener noreferrer" target="_blank">
+<span aria-hidden="true" class="material-symbols-outlined text-3xl">chat</span>
+<span class="font-bold tracking-tight text-sm hidden group-hover:block transition-all">WhatsApp</span>
+</a>
+<!-- Booking Modal Simulation -->
+<div aria-labelledby="modal-title" aria-modal="true" class="fixed inset-0 z-[110] hidden items-center justify-center bg-zinc-950/80 backdrop-blur-sm p-4" id="booking-modal" role="dialog">
+<div class="bg-white rounded-3xl max-w-lg w-full p-10 relative shadow-2xl">
+<a aria-label="Cerrar ventana" class="absolute top-6 right-6 text-zinc-400 hover:text-zinc-900 transition-colors" href="#">
+<span aria-hidden="true" class="material-symbols-outlined text-3xl">close</span>
+</a>
+<div class="text-center">
+<div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+<span aria-hidden="true" class="material-symbols-outlined text-primary text-4xl" style='font-variation-settings: "FILL" 1;'>calendar_month</span>
+</div>
+<h3 class="font-headline text-3xl font-bold mb-4 text-zinc-900" id="modal-title">Reserva tu Cita</h3>
+<div class="space-y-4 text-left">
+<button aria-label="Reservar Mantenimiento y Aceite" class="w-full p-5 border-2 border-zinc-100 rounded-2xl hover:border-primary/40 transition-all flex justify-between items-center group bg-zinc-50/50">
+<div>
+<p class="font-bold text-zinc-900">Mantenimiento y Aceite</p>
+<p class="text-xs text-zinc-500 font-medium mt-1 uppercase tracking-wider">Revisión general rápida</p>
+</div>
+<span aria-hidden="true" class="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</button>
+<button aria-label="Reservar Diagnosis o Avería" class="w-full p-5 border-2 border-zinc-100 rounded-2xl hover:border-primary/40 transition-all flex justify-between items-center group bg-zinc-50/50">
+<div>
+<p class="font-bold text-zinc-900">Diagnosis o Avería</p>
+<p class="text-xs text-zinc-500 font-medium mt-1 uppercase tracking-wider">Lectura de fallos electrónica</p>
+</div>
+<span aria-hidden="true" class="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</button>
+<button aria-label="Reservar Pre-ITV / Frenos" class="w-full p-5 border-2 border-zinc-100 rounded-2xl hover:border-primary/40 transition-all flex justify-between items-center group bg-zinc-50/50">
+<div>
+<p class="font-bold text-zinc-900">Pre-ITV / Frenos</p>
+<p class="text-xs text-zinc-500 font-medium mt-1 uppercase tracking-wider">Seguridad y documentación</p>
+</div>
+<span aria-hidden="true" class="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</body></html>
