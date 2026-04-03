@@ -60,18 +60,25 @@
 .modal-sheet { transform: translateY(20px); transition: transform 0.3s ease; }
 .modal-overlay.active .modal-sheet { transform: translateY(0); }
 
-/* Bottom nav — always anchored to true bottom */
+/* Bottom nav — always anchored to true bottom, Chrome mobile fix */
 #bottom-nav {
-transform: translateY(100%);
-transition: transform 0.3s ease-in-out;
 position: fixed;
 bottom: 0;
 left: 0;
 right: 0;
-/* Push content above the home indicator on iPhone */
 padding-bottom: env(safe-area-inset-bottom, 0px);
+will-change: transform;
+-webkit-transform: translate3d(0, 100%, 0);
+transform: translate3d(0, 100%, 0);
+transition: transform 0.3s ease-in-out;
+/* Force GPU layer to avoid Chrome repaint bug */
+-webkit-backface-visibility: hidden;
+backface-visibility: hidden;
 }
-#bottom-nav.visible { transform: translateY(0); }
+#bottom-nav.visible {
+-webkit-transform: translate3d(0, 0, 0);
+transform: translate3d(0, 0, 0);
+}
 .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
 
 /* Footer mobile padding accounts for bottom nav height + safe area */
@@ -711,7 +718,13 @@ href="https://wa.me/34696103730?text=Hola,%20me%20gustaría%20solicitar%20inform
     const nav = document.getElementById('bottom-nav');
     const hero = document.getElementById('hero-mobile');
     if (!nav || !hero) return;
-    nav.classList.toggle('visible', window.scrollY > hero.offsetHeight - 100);
+    // Use scrollY with a small threshold, works better in Chrome mobile
+    const threshold = hero.offsetHeight - 120;
+    if (window.scrollY > threshold) {
+      nav.classList.add('visible');
+    } else {
+      nav.classList.remove('visible');
+    }
   }
 
   // ─── MENU MODAL ─────────────────────────────────────────────────
