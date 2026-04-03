@@ -67,11 +67,16 @@
 
 /* Calendar day hover */
 .cal-day:hover:not(.cal-day–disabled):not(.cal-day–selected) { background: #f4f4f4; }
-.cal-day–selected { background: #ab0014 !important; color: white !important; }
-.cal-day–today { font-weight: 700; border: 2px solid #ab0014; }
+.cal-day–selected { background: #ab0014 !important; color: white !important; border: 2px solid #ab0014 !important; }
+.cal-day–today { font-weight: 700; border: 2px solid #3f3f46; color: #ab0014; }
 .cal-day–disabled { color: #d1d5db; cursor: default; pointer-events: none; }
 .cal-day–weekend { color: #d1d5db; cursor: default; pointer-events: none; }
-.cal-day { cursor: pointer; border-radius: 0.5rem; transition: background 0.15s; }
+.cal-day { cursor: pointer; border-radius: 0.5rem; transition: background 0.15s; border: 2px solid transparent; }
+
+/* Footer mobile padding to avoid bottom nav overlap */
+@media (max-width: 767px) {
+footer { padding-bottom: 80px; }
+}
 
 /* Time slot */
 .time-slot–selected { border-color: #ab0014 !important; color: #ab0014 !important; background: rgba(171,0,20,0.05) !important; }
@@ -355,7 +360,7 @@
         </li>
       </ul>
       <div class="flex flex-col sm:flex-row gap-4 pt-2">
-        <button onclick="openBooking()" class="bg-primary hover:bg-primary-container text-on-primary px-8 py-4 md:py-5 rounded-xl font-bold text-xs md:text-sm tracking-widest uppercase transition-all shadow-xl shadow-primary/20 flex-1 flex items-center justify-center gap-3 active:scale-95">
+        <button onclick="openBooking()" class="bg-primary hover:bg-primary-container text-on-primary px-8 py-4 md:py-5 rounded-xl font-bold text-xs md:text-sm tracking-widest uppercase transition-all flex-1 flex items-center justify-center gap-3 active:scale-95">
           <span class="material-symbols-outlined text-xl md:text-2xl">calendar_today</span>
           PEDIR CITA ONLINE
         </button>
@@ -836,9 +841,9 @@ href="https://wa.me/34696103730?text=Hola,%20me%20gustaría%20solicitar%20inform
     if (selectedDate && selectedTime) {
       const d = selectedDate;
       const label = `${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}/${d.getFullYear()}`;
-      btn.textContent = `CONFIRMAR CITA — ${label} · ${selectedTime}`;
+      btn.innerHTML = `<span class="block">CONFIRMAR CITA</span><span class="block text-xs font-normal opacity-80 mt-0.5 normal-case tracking-normal">${label} · ${selectedTime}</span>`;
     } else {
-      btn.textContent = 'CONFIRMAR CITA';
+      btn.innerHTML = `<span class="block">CONFIRMAR CITA</span>`;
     }
   }
 
