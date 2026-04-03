@@ -692,13 +692,16 @@ href="https://wa.me/34696103730?text=Hola,%20me%20gustaría%20solicitar%20inform
       d.classList.remove('bg-emerald-400', 'bg-yellow-400', 'bg-zinc-400', 'animate-pulse');
       if (isOpenDay && t >= 9 && t < 17.5) {
         d.classList.add('bg-emerald-400', 'animate-pulse');
-        t2.innerText = 'ABIERTO AHORA • L-V 9:00 - 18:00';
+        t2.innerText = 'ABIERTO AHORA • DE 9:00 A 18:00';
       } else if (isOpenDay && t >= 17.5 && t < 18) {
         d.classList.add('bg-yellow-400');
-        t2.innerText = 'CIERRA PRONTO • HASTA LAS 18:00';
+        t2.innerText = 'CIERRA PRONTO • A LAS 18:00';
+      } else if (isOpenDay && t >= 8.5 && t < 9) {
+        d.classList.add('bg-yellow-400');
+        t2.innerText = 'ABRE PRONTO • A LAS 9:00';
       } else {
         d.classList.add('bg-zinc-400');
-        t2.innerText = 'CERRADO AHORA • ABRE LUNES 9:00';
+        t2.innerText = 'CERRADO AHORA • ABIERTO DE L-V DE 9H A 18H';
       }
     });
   }
