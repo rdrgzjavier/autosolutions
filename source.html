@@ -14,8 +14,13 @@
 <meta property="og:title" content="Auto Solutions Las Rozas | Taller Mecánico"/>
 <meta property="og:description" content="Reparamos tu coche hoy mismo con ingeniería de precisión. Transparencia total."/>
 <meta property="og:image" content="https://lh3.googleusercontent.com/aida-public/AB6AXuBCuuYwFgtTqwVNA5YuiEr5tYV7_uU4ZqJCDN0U6GRCSDR98xuJCWHg4tconbFU9gaLzysAWIpphXJIVsVlaAffZM8uX85lfuHy1mSppWka87cdSSEoS7h73GVsk-IzmaWVKsnnhcb3pHmDXX0yohJWAC5zXmV_D25Np8Bbaxm4g_Y5xJc_9rBWBEC0aoIvhOXKL_iBZxDNOly5zJy-y3Jmby7pkRyIO8lNXfAifWkeSmDVcDqDJKKRj3LLnq0xAuSwY148XPFCd18"/>
-<link rel="canonical" href="https://rdrgzjavier.github.io/autosolutions/prueba.html" />
+<link rel="canonical" href="https://rdrgzjavier.github.io/autosolutions/" />
 <meta name="robots" content="index, follow" />
+<meta name="geo.region" content="ES-M" />
+<meta name="geo.placename" content="Las Rozas de Madrid" />
+<meta name="geo.position" content="40.4871038;-3.8967406" />
+<link rel="preconnect" href="https://maps.googleapis.com">
+<link rel="preconnect" href="https://maps.gstatic.com" crossorigin>
 
 <!-- JSON-LD LocalBusiness -->
 <script type="application/ld+json">
@@ -832,9 +837,14 @@ href="https://wa.me/34696103730?text=Hola,%20me%20gustaría%20solicitar%20inform
             <span class="material-symbols-outlined text-emerald-500" style='font-variation-settings:"FILL" 1;'>check_circle</span>${f}
           </div>`).join('')}
       </div>
-      <button onclick="closeServiceModal(); openBooking('${d.title}')" class="w-full bg-primary hover:bg-primary-container text-white px-8 py-4 rounded-xl font-bold text-xs tracking-widest uppercase transition-all">
-        PEDIR CITA PARA ESTE SERVICIO
-      </button>`;
+      <div class="flex flex-col sm:flex-row gap-3">
+        <button onclick="closeServiceModal(); openBooking('${d.title}')" class="flex-1 bg-primary hover:bg-primary-container text-white px-6 py-4 rounded-xl font-bold text-xs tracking-widest uppercase transition-all">
+          PEDIR CITA
+        </button>
+        <a href="https://wa.me/34696103730?text=Hola,%20vengo%20desde%20la%20web,%20quiero%20pedir%20cita%20directa%20para%20${encodeURIComponent(d.title)}." target="_blank" rel="noopener noreferrer" class="flex-1 bg-whatsapp hover:brightness-110 text-white px-6 py-4 rounded-xl font-bold text-xs tracking-widest uppercase transition-all flex items-center justify-center gap-2 no-underline">
+          <span class="material-symbols-outlined text-lg">chat</span> WHATSAPP
+        </a>
+      </div>`;
     document.getElementById('service-modal').classList.add('active');
     setPageInert(true);
     setTimeout(() => {
@@ -856,9 +866,17 @@ href="https://wa.me/34696103730?text=Hola,%20me%20gustaría%20solicitar%20inform
 
   function initCalendar() {
     const today = new Date();
+    today.setHours(0,0,0,0);
     calYear  = today.getFullYear();
     calMonth = today.getMonth();
-    selectedDate = new Date(today); // default = today
+    
+    // Find next available business day
+    let nextAvailable = new Date(today);
+    while(nextAvailable.getDay() === 0 || nextAvailable.getDay() === 6) {
+      nextAvailable.setDate(nextAvailable.getDate() + 1);
+    }
+    
+    selectedDate = nextAvailable;
     selectedTime = TIME_SLOTS[0];
     renderCalendar();
     renderTimeSlots();
@@ -896,13 +914,13 @@ href="https://wa.me/34696103730?text=Hola,%20me%20gustaría%20solicitar%20inform
       const isToday   = date.getTime() === today.getTime();
       const isSelected = selectedDate && date.getTime() === new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate()).setHours(0,0,0,0);
 
-      let cls = 'cal-day aspect-square flex items-center justify-center text-xs ';
-      if (isPast || isWeekend) cls += 'cal-day--disabled ';
+      let cls = 'cal-day aspect-square flex items-center justify-center text-xs outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ';
+      if (isPast || isWeekend) cls += 'cal-day--disabled opacity-50 ';
       else if (isSelected)     cls += 'cal-day--selected ';
       else if (isToday)        cls += 'cal-day--today ';
 
-      const onclick = (!isPast && !isWeekend) ? `selectDate(${calYear},${calMonth},${d})` : '';
-      grid.innerHTML += `<div class="${cls}" onclick="${onclick}">${d}</div>`;
+      const onclick = (!isPast && !isWeekend) ? `onclick="selectDate(${calYear},${calMonth},${d})"` : 'disabled';
+      grid.innerHTML += `<button type="button" class="${cls}" ${onclick}>${d}</button>`;
     }
   }
 
