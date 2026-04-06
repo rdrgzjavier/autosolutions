@@ -727,13 +727,15 @@ href="https://wa.me/34696103730?text=Hola,%20me%20gustaría%20solicitar%20inform
 </div>
 
 <script>
-  // ─── ACCESSIBILITY / FOCUS TRAP ─────────────────────────────────
+  // ─── ACCESSIBILITY / FOCUS TRAP & SCROLL LOCK ──────────────────
   function setPageInert(state) {
     const els = document.querySelectorAll('header, main, footer');
     els.forEach(el => {
       // Usamos inert nativo (soportado en >= 2023)
       if (el) el.inert = state;
     });
+    // Bloquear el desplazamiento visual de la página de fondo
+    document.body.style.overflow = state ? 'hidden' : '';
   }
 
   // ─── STATUS WIDGET ───────────────────────────────────────────────
@@ -1002,3 +1004,4 @@ href="https://wa.me/34696103730?text=Hola,%20me%20gustaría%20solicitar%20inform
 
 </body>
 </html>
+
