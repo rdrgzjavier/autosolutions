@@ -134,11 +134,11 @@ footer { padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
 }
 
 /* Calendar day hover */
-.cal-day:hover:not(.cal-day–disabled):not(.cal-day–selected) { background: #f4f4f4; }
-.cal-day–selected { background: #ab0014 !important; color: white !important; border: 2px solid #ab0014 !important; }
-.cal-day–today { font-weight: 700; border: 2px solid #3f3f46; color: #ab0014; }
-.cal-day–disabled { color: #d1d5db; cursor: default; pointer-events: none; }
-.cal-day–weekend { color: #d1d5db; cursor: default; pointer-events: none; }
+.cal-day:hover:not(.cal-day--disabled):not(.cal-day--selected) { background: #f4f4f4; }
+.cal-day--selected { background: #ab0014 !important; color: white !important; border: 2px solid #ab0014 !important; }
+.cal-day--today { font-weight: 700; border: 2px solid #3f3f46; color: #ab0014; }
+.cal-day--disabled { color: #d1d5db; cursor: default; pointer-events: none; }
+.cal-day--weekend { color: #d1d5db; cursor: default; pointer-events: none; }
 .cal-day { cursor: pointer; border-radius: 0.5rem; transition: background 0.15s; border: 2px solid transparent; }
 
 /* Footer mobile padding to avoid bottom nav overlap */
@@ -147,8 +147,8 @@ footer { padding-bottom: 80px; }
 }
 
 /* Time slot */
-.time-slot–selected { border-color: #ab0014 !important; color: #ab0014 !important; background: rgba(171,0,20,0.05) !important; }
-.time-slot–disabled { color: #d1d5db !important; text-decoration: line-through; cursor: not-allowed; }
+.time-slot--selected { border-color: #ab0014 !important; color: #ab0014 !important; background: rgba(171,0,20,0.05) !important; }
+.time-slot--disabled { color: #d1d5db !important; text-decoration: line-through; cursor: not-allowed; }
 </style>
 
 </head>
@@ -678,6 +678,7 @@ href="https://wa.me/34696103730?text=Hola,%20me%20gustaría%20solicitar%20inform
   <div class="mb-6">
     <label class="block text-[10px] font-bold uppercase text-zinc-400 mb-2" for="booking-select">Servicio</label>
     <select class="w-full border border-zinc-200 rounded-lg p-3 text-sm focus:ring-primary focus:border-primary" id="booking-select">
+      <option value="" disabled selected>Elige un servicio...</option>
       <option>Revisión General</option>
       <option>Aceite y Filtros</option>
       <option>Frenos</option>
@@ -734,7 +735,7 @@ href="https://wa.me/34696103730?text=Hola,%20me%20gustaría%20solicitar%20inform
 <script>
   // ─── ACCESSIBILITY / FOCUS TRAP & SCROLL LOCK ──────────────────
   function setPageInert(state) {
-    const els = document.querySelectorAll('header, main, footer');
+    const els = document.querySelectorAll('header, main, footer, #bottom-nav, a[aria-label="Contactar por WhatsApp"]');
     els.forEach(el => {
       // Usamos inert nativo (soportado en >= 2023)
       if (el) el.inert = state;
@@ -942,11 +943,11 @@ href="https://wa.me/34696103730?text=Hola,%20me%20gustaría%20solicitar%20inform
     container.innerHTML = TIME_SLOTS.map(t => {
       const unavail = UNAVAILABLE.includes(t);
       const selected = t === selectedTime;
-      let cls = 'py-3 border-2 rounded-xl font-bold text-sm transition-colors ';
+      let cls = 'py-3 border-2 rounded-xl font-bold text-sm transition-colors outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ';
       if (unavail)       cls += 'time-slot--disabled border-zinc-100 ';
       else if (selected) cls += 'time-slot--selected border-primary bg-primary/5 text-primary ';
       else               cls += 'border-zinc-100 text-zinc-600 hover:border-zinc-300 ';
-      return `<button class="${cls}" ${unavail ? 'disabled' : `onclick="selectTime('${t}')"`}>${t}</button>`;
+      return `<button class="${cls}" ${unavail ? 'aria-disabled="true"' : `onclick="selectTime('${t}')"`}>${t}</button>`;
     }).join('');
   }
 
