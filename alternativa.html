@@ -1,473 +1,1024 @@
 <!DOCTYPE html>
+
 <html class="light" lang="es">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Auto Solutions | Taller de Mecánica en Las Rozas</title>
+<title>Auto Solutions Las Rozas | Taller Mecánico Especializado</title>
 <meta name="theme-color" content="#ab0014" />
-<meta content="Mecánica de confianza en Las Rozas. Más de 15 años de experiencia técnica con un trato cercano y profesional." name="description"/>
+<meta content="Tu taller de confianza en Las Rozas. Mecánica general, cambio de aceite, neumáticos y diagnosis avanzada con más de 20 años de experiencia." name="description"/>
 
-<!-- Fonts: Inter for max readability (WCAG friendly) -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<!-- Open Graph -->
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://rdrgzjavier.github.io/autosolutions/"/>
+<meta property="og:title" content="Auto Solutions Las Rozas | Taller Mecánico"/>
+<meta property="og:description" content="Reparamos tu coche hoy mismo con ingeniería de precisión. Transparencia total."/>
+<meta property="og:image" content="https://lh3.googleusercontent.com/aida-public/AB6AXuBCuuYwFgtTqwVNA5YuiEr5tYV7_uU4ZqJCDN0U6GRCSDR98xuJCWHg4tconbFU9gaLzysAWIpphXJIVsVlaAffZM8uX85lfuHy1mSppWka87cdSSEoS7h73GVsk-IzmaWVKsnnhcb3pHmDXX0yohJWAC5zXmV_D25Np8Bbaxm4g_Y5xJc_9rBWBEC0aoIvhOXKL_iBZxDNOly5zJy-y3Jmby7pkRyIO8lNXfAifWkeSmDVcDqDJKKRj3LLnq0xAuSwY148XPFCd18"/>
+<link rel="canonical" href="https://rdrgzjavier.github.io/autosolutions/" />
+<meta name="robots" content="index, follow" />
+<meta name="geo.region" content="ES-M" />
+<meta name="geo.placename" content="Las Rozas de Madrid" />
+<meta name="geo.position" content="40.4871038;-3.8967406" />
+<link rel="preconnect" href="https://maps.googleapis.com">
+<link rel="preconnect" href="https://maps.gstatic.com" crossorigin>
+
+<!-- JSON-LD LocalBusiness -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoRepair",
+  "name": "Auto Solutions Las Rozas",
+  "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuBCuuYwFgtTqwVNA5YuiEr5tYV7_uU4ZqJCDN0U6GRCSDR98xuJCWHg4tconbFU9gaLzysAWIpphXJIVsVlaAffZM8uX85lfuHy1mSppWka87cdSSEoS7h73GVsk-IzmaWVKsnnhcb3pHmDXX0yohJWAC5zXmV_D25Np8Bbaxm4g_Y5xJc_9rBWBEC0aoIvhOXKL_iBZxDNOly5zJy-y3Jmby7pkRyIO8lNXfAifWkeSmDVcDqDJKKRj3LLnq0xAuSwY148XPFCd18",
+  "url": "https://rdrgzjavier.github.io/autosolutions/",
+  "telephone": "+34696103730",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "C. Sofía, 4",
+    "addressLocality": "Las Rozas de Madrid",
+    "postalCode": "28232",
+    "addressCountry": "ES"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 40.4871038,
+    "longitude": -3.8967406
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "opens": "09:00",
+    "closes": "18:00"
+  },
+  "priceRange": "$$"
+}
+</script>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <!-- Icons -->
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<!-- Tailwind -->
+<!-- Tailwind (TODO: Eliminar CDN y compilar para Producción) -->
+<!-- <link rel="stylesheet" href="/dist/output.css"> -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script>
   tailwind.config = {
+    darkMode: "class",
     theme: {
       extend: {
         colors: {
+          "surface": "#f9f9f9",
           "primary": "#ab0014",
-          "primary-dark": "#8b0010",
-          "zinc-900": "#18181b",
-          "zinc-600": "#52525b",
-          "zinc-100": "#f4f4f5",
+          "primary-container": "#d22026",
+          "on-primary": "#ffffff",
+          "on-surface": "#1a1c1c",
+          "on-surface-variant": "#5c403d",
+          "outline": "#916f6c",
           "whatsapp": "#25D366",
         },
         fontFamily: {
-          "sans": ["Inter", "sans-serif"],
+          "headline": ["Space Grotesk", "sans-serif"],
+          "body": ["Inter", "sans-serif"],
+        },
+        borderRadius: {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
         },
       },
     },
   }
 </script>
 <style>
-  :root {
-    --primary: #ab0014;
-  }
   .material-symbols-outlined {
-    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
   }
-  
-  /* iOs Liquid Glass Header */
-  .liquid-glass {
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: saturate(180%) blur(20px);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  .hero-overlay-desktop {
+    background: linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 100%);
   }
+  .hero-overlay-mobile {
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.2) 100%);
+  }
+  .scroll-hide::-webkit-scrollbar { display: none; }
+  .scroll-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
-  /* Service Card Hover Effect (User liked this) */
-  .service-card {
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    border: 1px solid #e4e4e7;
-    background: #ffffff;
-  }
-  .service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
-    border-color: var(--primary);
-  }
-  .service-card:hover .icon-box {
-    background: var(--primary);
-    color: #ffffff;
-    transform: scale(1.1);
-  }
+/* Modal transitions */
+.modal-overlay { opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+.modal-overlay.active { opacity: 1; pointer-events: auto; }
+.modal-sheet { transform: translateY(20px); transition: transform 0.3s ease; }
+.modal-overlay.active .modal-sheet { transform: translateY(0); }
 
-  /* Accessibility & Contrast */
-  .text-balance { text-wrap: balance; }
-  
-  /* Navigation Fixes */
-  html { scroll-behavior: smooth; }
+/* Bottom nav — always anchored to true bottom, Chrome mobile fix */
+#bottom-nav {
+position: fixed;
+bottom: 0;
+left: 0;
+right: 0;
+padding-bottom: env(safe-area-inset-bottom, 0px);
+will-change: transform;
+-webkit-transform: translate3d(0, 100%, 0);
+transform: translate3d(0, 100%, 0);
+transition: transform 0.3s ease-in-out;
+/* Force GPU layer to avoid Chrome repaint bug */
+-webkit-backface-visibility: hidden;
+backface-visibility: hidden;
+}
+#bottom-nav.visible {
+-webkit-transform: translate3d(0, 0, 0);
+transform: translate3d(0, 0, 0);
+}
+.pb-safe { padding-bottom: env(safe-area-inset-bottom); }
 
-  /* Calendar styles from index */
-  .cal-day:hover:not(.cal-day--disabled):not(.cal-day--selected) { background: #f4f4f4; }
-  .cal-day--selected { background: #ab0014 !important; color: white !important; }
-  .cal-day--today { font-weight: 700; border: 2px solid #18181b; color: #ab0014; }
-  .cal-day--disabled { color: #d1d5db; cursor: default; pointer-events: none; }
-  .cal-day { cursor: pointer; border-radius: 0.5rem; transition: background 0.15s; border: 2px solid transparent; }
-  
-  .modal-overlay { opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
-  .modal-overlay.active { opacity: 1; pointer-events: auto; }
-  .modal-sheet { transform: translateY(20px); transition: transform 0.3s ease; }
-  .modal-overlay.active .modal-sheet { transform: translateY(0); }
+/* Footer mobile padding accounts for bottom nav height + safe area */
+@media (max-width: 767px) {
+footer { padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
+}
+
+/* Calendar day hover */
+.cal-day:hover:not(.cal-day--disabled):not(.cal-day--selected) { background: #f4f4f4; }
+.cal-day--selected { background: #ab0014 !important; color: white !important; border: 2px solid #ab0014 !important; }
+.cal-day--today { font-weight: 700; border: 2px solid #3f3f46; color: #ab0014; }
+.cal-day--disabled { color: #d1d5db; cursor: default; pointer-events: none; }
+.cal-day--weekend { color: #d1d5db; cursor: default; pointer-events: none; }
+.cal-day { cursor: pointer; border-radius: 0.5rem; transition: background 0.15s; border: 2px solid transparent; }
+
+/* Footer mobile padding to avoid bottom nav overlap */
+@media (max-width: 767px) {
+footer { padding-bottom: 80px; }
+}
+
+/* Time slot */
+.time-slot--selected { border-color: #ab0014 !important; color: #ab0014 !important; background: rgba(171,0,20,0.05) !important; }
+.time-slot--disabled { color: #d1d5db !important; text-decoration: line-through; cursor: not-allowed; }
 </style>
+
 </head>
-<body class="bg-white text-zinc-900 font-sans antialiased overflow-x-hidden">
+<body class="bg-surface font-body text-on-surface antialiased">
 
 <!-- ═══════════════════════════════════════════
-     HEADER (Liquid Glass)
+     HEADER — desktop nav | mobile hamburger
 ════════════════════════════════════════════ -->
-<header class="fixed top-0 w-full z-[100] liquid-glass">
-  <nav class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-    <!-- Brand -->
-    <a href="#" class="flex items-center gap-3">
-      <div class="w-9 h-9 bg-primary rounded-lg flex items-center justify-center text-white shadow-md">
-        <span class="material-symbols-outlined font-bold">handyman</span>
-      </div>
-      <span class="text-xl font-black tracking-tighter uppercase">Auto Solutions</span>
-    </a>
 
-    <!-- Desktop Nav -->
-    <div class="hidden lg:flex items-center space-x-10">
-      <a href="#servicios" class="text-xs font-bold uppercase tracking-widest text-zinc-600 hover:text-primary transition-colors">Servicios</a>
-      <a href="#experiencia" class="text-xs font-bold uppercase tracking-widest text-zinc-600 hover:text-primary transition-colors">Nosotros</a>
-      <a href="#contacto" class="text-xs font-bold uppercase tracking-widest text-zinc-600 hover:text-primary transition-colors">Ubicación</a>
-      <div class="h-4 w-[1px] bg-zinc-200"></div>
-      <a href="tel:696103730" class="flex items-center gap-2 text-zinc-900 font-extrabold">
-        <span class="material-symbols-outlined text-primary">call</span>
-        696 10 37 30
-      </a>
-    </div>
+<header class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-zinc-200">
+  <nav class="flex justify-between items-center h-16 px-4 md:px-6 lg:px-12 max-w-screen-2xl mx-auto">
 
-    <!-- Right Actions -->
-    <div class="flex items-center gap-4">
-      <button onclick="openBooking()" class="hidden md:block bg-zinc-900 text-white px-6 py-2.5 rounded-full font-bold text-xs tracking-widest uppercase hover:bg-primary transition-all">
-        Pedir Cita
-      </button>
-      <button onclick="toggleMenu()" class="lg:hidden text-zinc-900 p-2">
-        <span class="material-symbols-outlined text-3xl">menu</span>
-      </button>
-    </div>
+<!-- Hamburger (mobile only) -->
+<button aria-label="Abrir menú" aria-expanded="false" id="mobile-menu-btn" class="md:hidden flex items-center justify-center w-10 h-10 text-zinc-900" onclick="toggleMenu()">
+  <span class="material-symbols-outlined text-2xl">menu</span>
+</button>
+
+<!-- Brand -->
+<a class="flex items-center gap-2 group" href="./index.html" title="Ir a inicio - Auto Solutions">
+  <div class="w-7 h-7 md:w-8 md:h-8 bg-primary rounded flex items-center justify-center text-white">
+    <span class="material-symbols-outlined text-lg md:text-xl font-bold">handyman</span>
+  </div>
+  <span class="text-base md:text-xl font-bold tracking-tighter text-zinc-900 font-headline uppercase">Auto Solutions</span>
+</a>
+
+<!-- Nav links (desktop only) -->
+<div class="hidden md:flex items-center space-x-8 font-headline">
+  <a class="text-zinc-700 hover:text-primary transition-all text-sm font-bold tracking-wider relative group pb-1" href="#servicios">
+    Servicios
+    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+  </a>
+  <a class="text-zinc-700 hover:text-primary transition-all text-sm font-bold tracking-wider relative group pb-1" href="#confiar">
+    Taller
+    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+  </a>
+  <a class="text-zinc-700 hover:text-primary transition-all text-sm font-bold tracking-wider relative group pb-1" href="#visitanos">
+    Contacto
+    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+  </a>
+</div>
+
+<!-- Phone (always visible) -->
+<a aria-label="Llamar a Auto Solutions" class="flex items-center gap-1.5 text-primary font-bold transition-transform active:scale-95" href="tel:696103730">
+  <span class="material-symbols-outlined text-lg md:text-xl">call</span>
+  <span class="text-xs md:text-base tracking-tight">696 10 37 30</span>
+</a>
+
   </nav>
 </header>
 
-<!-- ═══════════════════════════════════════════
-     HERO SECTION (High Contrast & Energy)
-════════════════════════════════════════════ -->
-<section class="relative pt-40 pb-20 md:pt-52 md:pb-32 bg-zinc-50 overflow-hidden">
-  <!-- Decorative background elements -->
-  <div class="absolute top-0 right-0 -mr-20 -mt-20 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px]"></div>
-  
-  <div class="max-w-7xl mx-auto px-6 relative z-10">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-      <div>
-        <div class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[11px] font-black uppercase tracking-widest mb-8 border border-primary/20">
-          Taller de confianza en Las Rozas
-        </div>
-        <h1 class="text-5xl md:text-7xl font-black text-zinc-900 tracking-tighter leading-[1] mb-8 text-balance">
-          Mecánica de precisión con trato <span class="text-primary underline decoration-zinc-200 underline-offset-8">humano</span>.
-        </h1>
-        <p class="text-xl text-zinc-600 mb-10 max-w-xl leading-relaxed">
-          Más de 15 años cuidando cada detalle de tu seguridad. Ingeniería experta, transparencia absoluta y recambios certificados.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4">
-          <button onclick="openBooking()" class="bg-primary text-white px-10 py-5 rounded-2xl font-black text-sm tracking-widest uppercase hover:bg-primary-dark transition-all shadow-xl shadow-primary/20">
-            Reservar Cita Ahora
-          </button>
-          <a href="https://wa.me/34696103730" class="bg-white text-zinc-900 border-2 border-zinc-200 px-10 py-5 rounded-2xl font-black text-sm tracking-widest uppercase hover:border-zinc-900 transition-all flex items-center justify-center gap-3">
-            <span class="material-symbols-outlined text-whatsapp font-bold">chat</span>
-            WhatsApp Directo
-          </a>
-        </div>
-      </div>
-      
-      <div class="relative">
-        <div class="rounded-[2.5rem] overflow-hidden shadow-3xl border-8 border-white">
-          <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?q=80&w=1200" alt="Mecánico trabajando" class="w-full aspect-[4/3] object-cover">
-        </div>
-        <!-- Floating trust badge -->
-        <div class="absolute -bottom-10 -left-10 bg-zinc-900 text-white p-8 rounded-3xl shadow-2xl hidden md:block">
-          <div class="text-4xl font-black text-primary">15+</div>
-          <div class="text-xs font-bold uppercase tracking-widest opacity-60">Años de experiencia</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<main>
 
-<!-- ═══════════════════════════════════════════
-     SERVICES SECTION (Uniform Cards)
-════════════════════════════════════════════ -->
-<section id="servicios" class="py-24 md:py-32 bg-white">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="text-center max-w-3xl mx-auto mb-20">
-      <h2 class="text-xs font-black uppercase tracking-[0.4em] text-primary mb-6">Nuestra especialidad</h2>
-      <h3 class="text-4xl md:text-5xl font-black text-zinc-900 tracking-tighter">Servicios mecánicos de alta calidad.</h3>
-    </div>
+  <!-- ═══════════════════════════════════════════
+       HERO — desktop: contained card | mobile: full-bleed
+  ════════════════════════════════════════════ -->
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Service Card -->
-      <div onclick="openServiceModal('oil')" class="service-card p-10 rounded-[2rem] cursor-pointer group">
-        <div class="icon-box w-16 h-16 bg-zinc-100 rounded-2xl flex items-center justify-center text-zinc-900 mb-8 transition-all duration-500">
-          <span class="material-symbols-outlined text-3xl">oil_barrel</span>
-        </div>
-        <h4 class="text-2xl font-black text-zinc-900 mb-4">Mecánica Rápida</h4>
-        <p class="text-zinc-600 leading-relaxed mb-8">Mantenimiento preventivo completo con diagnosis digital para asegurar la vida útil de tu motor.</p>
-        <div class="flex items-center gap-2 text-primary font-black text-xs uppercase tracking-widest">
-          Ver detalles
-          <span class="material-symbols-outlined text-sm group-hover:translate-x-2 transition-transform">arrow_right_alt</span>
-        </div>
-      </div>
+  <!-- DESKTOP HERO -->
 
-      <!-- Service Card -->
-      <div onclick="openServiceModal('brakes')" class="service-card p-10 rounded-[2rem] cursor-pointer group">
-        <div class="icon-box w-16 h-16 bg-zinc-100 rounded-2xl flex items-center justify-center text-zinc-900 mb-8 transition-all duration-500">
-          <span class="material-symbols-outlined text-3xl">album</span>
-        </div>
-        <h4 class="text-2xl font-black text-zinc-900 mb-4">Seguridad y Frenos</h4>
-        <p class="text-zinc-600 leading-relaxed mb-8">Inspección de pastillas, discos y sistemas ABS. Frenada segura para ti y tu familia.</p>
-        <div class="flex items-center gap-2 text-primary font-black text-xs uppercase tracking-widest">
-          Ver detalles
-          <span class="material-symbols-outlined text-sm group-hover:translate-x-2 transition-transform">arrow_right_alt</span>
-        </div>
+  <section class="hidden md:block pt-24 pb-8 px-6 lg:px-12">
+    <div class="max-w-7xl mx-auto relative min-h-[600px] flex items-center overflow-hidden rounded-3xl shadow-2xl">
+      <div class="absolute inset-0 z-0">
+        <img alt="Mecánico experto trabajando con precisión en el motor de un coche de alta gama" class="w-full h-full object-cover" width="1200" height="800" fetchpriority="high"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCuuYwFgtTqwVNA5YuiEr5tYV7_uU4ZqJCDN0U6GRCSDR98xuJCWHg4tconbFU9gaLzysAWIpphXJIVsVlaAffZM8uX85lfuHy1mSppWka87cdSSEoS7h73GVsk-IzmaWVKsnnhcb3pHmDXX0yohJWAC5zXmV_D25Np8Bbaxm4g_Y5xJc_9rBWBEC0aoIvhOXKL_iBZxDNOly5zJy-y3Jmby7pkRyIO8lNXfAifWkeSmDVcDqDJKKRj3LLnq0xAuSwY148XPFCd18"/>
+        <div class="absolute inset-0 hero-overlay-desktop"></div>
       </div>
-
-      <!-- Service Card -->
-      <div onclick="openServiceModal('tires')" class="service-card p-10 rounded-[2rem] cursor-pointer group">
-        <div class="icon-box w-16 h-16 bg-zinc-100 rounded-2xl flex items-center justify-center text-zinc-900 mb-8 transition-all duration-500">
-          <span class="material-symbols-outlined text-3xl">tire_repair</span>
-        </div>
-        <h4 class="text-2xl font-black text-zinc-900 mb-4">Neumáticos</h4>
-        <p class="text-zinc-600 leading-relaxed mb-8">Sustitución, equilibrado y alineación 3D para un agarre perfecto en cualquier asfalto.</p>
-        <div class="flex items-center gap-2 text-primary font-black text-xs uppercase tracking-widest">
-          Ver detalles
-          <span class="material-symbols-outlined text-sm group-hover:translate-x-2 transition-transform">arrow_right_alt</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════
-     ABOUT / TRUST (High Contrast)
-════════════════════════════════════════════ -->
-<section id="experiencia" class="py-24 bg-zinc-950 text-white overflow-hidden">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-      <div>
-        <h2 class="text-xs font-black uppercase tracking-[0.4em] text-primary mb-8">Por qué confiar en nosotros</h2>
-        <h3 class="text-4xl md:text-6xl font-black tracking-tighter mb-10 leading-tight">Expertos en lo que hacemos, claros en lo que decimos.</h3>
-        
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
-          <div>
-            <h4 class="text-primary font-black text-lg mb-4">Transparencia</h4>
-            <p class="text-zinc-400 text-sm leading-relaxed">Mostramos las piezas sustituidas y explicamos cada intervención. Honestidad garantizada.</p>
+      <div class="relative z-10 px-8 md:px-16 w-full">
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold tracking-widest uppercase mb-6" id="status-widget-desktop">
+            <span class="w-2.5 h-2.5 rounded-full bg-zinc-400" id="status-dot-desktop"></span>
+            <span id="status-text-desktop">CARGANDO ESTADO...</span>
           </div>
-          <div>
-            <h4 class="text-primary font-black text-lg mb-4">Certificación</h4>
-            <p class="text-zinc-400 text-sm leading-relaxed">Trabajamos bajo estándares de primer nivel con recambios homologados por fabricantes.</p>
-          </div>
-          <div>
-            <h4 class="text-primary font-black text-lg mb-4">Puntualidad</h4>
-            <p class="text-zinc-400 text-sm leading-relaxed">Respetamos los plazos acordados. Tu tiempo es tan importante como tu vehículo.</p>
-          </div>
-          <div>
-            <h4 class="text-primary font-black text-lg mb-4">Cercanía</h4>
-            <p class="text-zinc-400 text-sm leading-relaxed">Trato familiar en Las Rozas. Somos tu taller de barrio con tecnología de concesionario.</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="relative">
-        <div class="bg-primary/20 aspect-square rounded-full absolute inset-0 blur-[100px] -z-10"></div>
-        <img src="https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?q=80&w=1000" alt="Workshop Tooling" class="rounded-[3rem] shadow-2xl border-4 border-white/10">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════
-     CONTACT / LOCATION
-════════════════════════════════════════════ -->
-<section id="contacto" class="py-24 bg-white">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="bg-zinc-50 rounded-[3rem] overflow-hidden border border-zinc-200 flex flex-col lg:flex-row">
-      <div class="lg:w-1/2 p-12 md:p-20">
-        <h2 class="text-4xl font-black tracking-tighter text-zinc-900 mb-10">Visítanos hoy mismo.</h2>
-        <div class="space-y-10">
-          <div class="flex gap-6">
-            <span class="material-symbols-outlined text-primary text-3xl">location_on</span>
-            <div>
-              <h4 class="font-black text-zinc-900 mb-1">Ubicación</h4>
-              <p class="text-zinc-600">C. Sofía, 4, Európolis, 28232 Las Rozas de Madrid</p>
-            </div>
-          </div>
-          <div class="flex gap-6">
-            <span class="material-symbols-outlined text-primary text-3xl">schedule</span>
-            <div>
-              <h4 class="font-black text-zinc-900 mb-1">Horario</h4>
-              <p class="text-zinc-600">Lunes a Viernes: 09:00 — 18:00 (Ininterrumpido)</p>
-            </div>
-          </div>
-          <div class="pt-10 border-t border-zinc-200">
-            <a href="tel:696103730" class="text-3xl font-black text-zinc-900 hover:text-primary transition-colors flex items-center gap-4">
+          <h1 class="font-headline text-5xl md:text-7xl font-bold text-white tracking-tighter mb-6 leading-[1.1] drop-shadow-md">
+            Tu taller de <span class="text-red-400">confianza</span> en Las Rozas.
+          </h1>
+          <p class="text-zinc-200 text-lg md:text-xl mb-10 leading-relaxed font-normal drop-shadow-sm max-w-2xl">
+            Reparamos tu coche hoy mismo con ingeniería de precisión. Transparencia total y rapidez garantizada en el Polígono Európolis.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-5">
+            <button onclick="openBooking()" class="bg-primary hover:bg-primary-container text-on-primary px-10 py-4 rounded font-bold text-sm tracking-tight transition-all flex items-center justify-center gap-2 group shadow-lg active:scale-95">
+              <span class="material-symbols-outlined text-xl">calendar_month</span>
+              PEDIR CITA ONLINE
+            </button>
+            <a class="bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 text-white px-10 py-4 rounded font-bold text-sm tracking-tight transition-all flex items-center justify-center gap-2 no-underline" href="tel:696103730">
+              <span class="material-symbols-outlined text-xl">call</span>
               696 10 37 30
             </a>
           </div>
+          <div class="mt-12 flex items-center gap-8">
+            <div class="flex flex-col">
+              <div class="flex text-yellow-400 gap-0.5">
+                <span class="material-symbols-outlined" style='font-variation-settings:"FILL" 1;'>star</span>
+                <span class="material-symbols-outlined" style='font-variation-settings:"FILL" 1;'>star</span>
+                <span class="material-symbols-outlined" style='font-variation-settings:"FILL" 1;'>star</span>
+                <span class="material-symbols-outlined" style='font-variation-settings:"FILL" 1;'>star</span>
+                <span class="material-symbols-outlined" style='font-variation-settings:"FILL" 0;'>star_half</span>
+              </div>
+              <span class="text-white text-xs mt-1 font-medium drop-shadow-sm">4,1/5 Valoración Google</span>
+            </div>
+            <div class="h-8 w-[1px] bg-white/20"></div>
+            <div class="text-white">
+              <span class="block text-xl font-bold drop-shadow-sm">+20 Años</span>
+              <span class="text-[10px] uppercase tracking-widest text-zinc-400 font-bold">De Experiencia</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="lg:w-1/2 min-h-[400px]">
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3034.46467475143!2d-3.899315523438287!3d40.48710785199653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd419bc700000001%3A0x67399479b187515!2sAuto%20Solutions!5e0!3m2!1ses!2ses!4v1714480000000!5m2!1ses!2ses" 
-          class="w-full h-full border-0" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <!-- MOBILE HERO -->
+
+  <section class="md:hidden relative min-h-[550px] flex flex-col justify-end p-6 overflow-hidden" id="hero-mobile">
+    <img alt="Mecánico experto trabajando con precisión en el motor de un coche de alta gama en un taller moderno"
+      class="absolute inset-0 w-full h-full object-cover" width="800" height="600" fetchpriority="high"
+      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCuuYwFgtTqwVNA5YuiEr5tYV7_uU4ZqJCDN0U6GRCSDR98xuJCWHg4tconbFU9gaLzysAWIpphXJIVsVlaAffZM8uX85lfuHy1mSppWka87cdSSEoS7h73GVsk-IzmaWVKsnnhcb3pHmDXX0yohJWAC5zXmV_D25Np8Bbaxm4g_Y5xJc_9rBWBEC0aoIvhOXKL_iBZxDNOly5zJy-y3Jmby7pkRyIO8lNXfAifWkeSmDVcDqDJKKRj3LLnq0xAuSwY148XPFCd18"/>
+    <div class="absolute inset-0 hero-overlay-mobile"></div>
+    <div class="relative z-10 w-full max-w-lg">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold tracking-widest uppercase mb-6" id="status-widget-mobile">
+        <span class="w-2.5 h-2.5 rounded-full bg-zinc-400" id="status-dot-mobile"></span>
+        <span id="status-text-mobile">CARGANDO ESTADO...</span>
+      </div>
+      <h2 class="font-headline text-4xl font-bold text-white leading-tight mb-4">Tu taller de confianza en Las Rozas</h2>
+      <div class="flex flex-col gap-2 mb-8">
+        <p class="text-white font-bold text-sm tracking-widest uppercase">+20 Años de Experiencia</p>
+        <div class="flex items-center gap-2">
+          <div class="flex text-yellow-400">
+            <span class="material-symbols-outlined text-sm" style='font-variation-settings:"FILL" 1;'>star</span>
+            <span class="material-symbols-outlined text-sm" style='font-variation-settings:"FILL" 1;'>star</span>
+            <span class="material-symbols-outlined text-sm" style='font-variation-settings:"FILL" 1;'>star</span>
+            <span class="material-symbols-outlined text-sm" style='font-variation-settings:"FILL" 1;'>star</span>
+            <span class="material-symbols-outlined text-sm" style='font-variation-settings:"FILL" 0.5;'>star_half</span>
+          </div>
+          <span class="text-white text-xs font-bold">4.1 <span class="text-zinc-300 font-normal ml-1">Google Reviews</span></span>
+        </div>
+      </div>
+      <div class="flex flex-col gap-3">
+        <button onclick="openBooking()" class="w-full bg-primary text-white py-4 rounded font-bold flex items-center justify-center gap-2 active:scale-[0.98] transition-all shadow-xl">
+          <span class="material-symbols-outlined text-lg">calendar_month</span>
+          <span class="uppercase tracking-wider text-xs">PEDIR CITA ONLINE</span>
+        </button>
+        <a class="w-full border-2 border-white/40 text-white py-4 rounded font-bold flex items-center justify-center gap-2 active:scale-[0.98] transition-all backdrop-blur-sm text-center no-underline" href="tel:696103730">
+          <span class="material-symbols-outlined text-lg">call</span>
+          <span class="uppercase tracking-wider text-xs">696 10 37 30</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       SERVICES
+  ════════════════════════════════════════════ -->
+
+  <section class="py-16 md:py-24 bg-surface px-6 md:px-8" id="servicios">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-16 gap-4">
+        <div>
+          <span class="text-primary font-bold text-xs tracking-widest uppercase mb-2 block">Nuestros Servicios</span>
+          <h2 class="font-headline text-2xl md:text-4xl font-bold tracking-tighter text-on-surface">Mantenimiento de Precisión</h2>
+        </div>
+        <p class="text-zinc-600 mb-10 md:mb-16 max-w-full text-center md:text-left leading-relaxed">
+          Utilizamos recambios originales y maquinaria de última generación para asegurar que tu vehículo vuelva a la carretera en condiciones óptimas.
+        </p>
+      </div>
+
+  <!-- Desktop: grid | Mobile: stacked -->
+  <div class="grid grid-cols-1 md:grid-cols-6 gap-4 md:gap-6">
+    <article class="md:col-span-2 bg-white border border-zinc-100 p-6 md:p-8 rounded-xl group hover:border-primary/20 transition-all duration-300 shadow-sm hover:shadow-xl">
+      <div class="flex items-start gap-4 md:gap-6">
+        <span class="material-symbols-outlined text-3xl md:text-4xl text-primary group-hover:scale-110 transition-transform duration-300">oil_barrel</span>
+        <div>
+          <h3 class="font-headline text-lg md:text-xl font-bold mb-2 md:mb-3">Aceite y Filtros</h3>
+          <p class="text-sm text-on-surface-variant mb-4 md:mb-6">Cambio preventivo para alargar la vida de tu motor.</p>
+          <button class="text-xs font-bold text-primary tracking-widest uppercase flex items-center gap-2 group-hover:gap-3 transition-all" onclick="openServiceModal('oil')">SABER MÁS <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+        </div>
+      </div>
+    </article>
+    <article class="md:col-span-2 bg-white border border-zinc-100 p-6 md:p-8 rounded-xl group hover:border-primary/20 transition-all duration-300 shadow-sm hover:shadow-xl">
+      <div class="flex items-start gap-4 md:gap-6">
+        <span class="material-symbols-outlined text-3xl md:text-4xl text-primary group-hover:scale-110 transition-transform duration-300">album</span>
+        <div>
+          <h3 class="font-headline text-lg md:text-xl font-bold mb-2 md:mb-3">Sistema de Frenos</h3>
+          <p class="text-sm text-on-surface-variant mb-4 md:mb-6">Revisión de pastillas, discos y líquido de frenos.</p>
+          <button class="text-xs font-bold text-primary tracking-widest uppercase flex items-center gap-2 group-hover:gap-3 transition-all" onclick="openServiceModal('brakes')">SABER MÁS <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+        </div>
+      </div>
+    </article>
+    <article class="md:col-span-2 bg-white border border-zinc-100 p-6 md:p-8 rounded-xl group hover:border-primary/20 transition-all duration-300 shadow-sm hover:shadow-xl">
+      <div class="flex items-start gap-4 md:gap-6">
+        <span class="material-symbols-outlined text-3xl md:text-4xl text-primary group-hover:scale-110 transition-transform duration-300">tire_repair</span>
+        <div>
+          <h3 class="font-headline text-lg md:text-xl font-bold mb-2 md:mb-3">Neumáticos</h3>
+          <p class="text-sm text-on-surface-variant mb-4 md:mb-6">Equilibrado, alineación y cambio de las mejores marcas.</p>
+          <button class="text-xs font-bold text-primary tracking-widest uppercase flex items-center gap-2 group-hover:gap-3 transition-all" onclick="openServiceModal('tires')">VER OFERTAS <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+        </div>
+      </div>
+    </article>
+    <article class="md:col-span-3 bg-white border border-zinc-100 p-6 md:p-8 rounded-xl group hover:border-primary/20 transition-all duration-300 shadow-sm hover:shadow-xl">
+      <div class="flex items-start gap-4 md:gap-6">
+        <span class="material-symbols-outlined text-3xl md:text-4xl text-primary group-hover:scale-110 transition-transform duration-300">ac_unit</span>
+        <div>
+          <h3 class="font-headline text-lg md:text-xl font-bold mb-2 md:mb-3">Aire Acondicionado</h3>
+          <p class="text-sm text-on-surface-variant mb-4">Carga de gas y desinfección de conductos.</p>
+          <button class="text-xs font-bold text-primary tracking-widest uppercase flex items-center gap-2 group-hover:gap-3 transition-all" onclick="openServiceModal('ac')">SABER MÁS <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+        </div>
+      </div>
+    </article>
+    <article class="md:col-span-3 bg-white border border-zinc-100 p-6 md:p-8 rounded-xl group hover:border-primary/20 transition-all duration-300 shadow-sm hover:shadow-xl">
+      <div class="flex items-start gap-4 md:gap-6">
+        <span class="material-symbols-outlined text-3xl md:text-4xl text-primary group-hover:scale-110 transition-transform duration-300">battery_charging_80</span>
+        <div>
+          <h3 class="font-headline text-lg md:text-xl font-bold mb-2 md:mb-3">Diagnosis y Baterías</h3>
+          <p class="text-sm text-on-surface-variant mb-4">Comprobación de carga y sustitución inmediata.</p>
+          <button class="text-xs font-bold text-primary tracking-widest uppercase flex items-center gap-2 group-hover:gap-3 transition-all" onclick="openServiceModal('battery')">SABER MÁS <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+
+    <!-- SEO: Contenido de servicios para rastreadores -->
+    <div class="sr-only">
+      <h3>Detalles completos de Mantenimiento y Mecánica</h3>
+      <ul>
+        <li><strong>Aceite y Filtros:</strong> Mantenimiento preventivo esencial para garantizar la lubricación óptima. Incluye vaciado, filtro y niveles de cortesía.</li>
+        <li><strong>Sistema de Frenos:</strong> Inspeccionamos pastillas, discos y líquido de frenos garantizando una frenada equilibrada y segura.</li>
+        <li><strong>Neumáticos y Alineación:</strong> Agarre perfecto y desgaste uniforme mediante alineación 3D computarizada con las mejores marcas.</li>
+        <li><strong>Aire Acondicionado:</strong> Carga de gas R134a/R1234yf y desinfección de conductos con ozono para eliminar olores y bacterias.</li>
+        <li><strong>Diagnosis y Baterías:</strong> Localización de averías electrónicas y sustitución de baterías de alta capacidad para todos los vehículos.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       WHY TRUST US — mobile content, desktop layout
+  ════════════════════════════════════════════ -->
+
+  <section class="py-16 md:py-24 bg-zinc-50 px-6 md:px-8 border-y border-zinc-200" id="confiar">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="font-headline text-2xl md:text-4xl font-bold tracking-tighter text-on-surface mb-6 text-center md:text-left">Taller</h2>
+      <p class="text-zinc-600 mb-10 md:mb-16 max-w-full text-center md:text-left leading-relaxed">
+        Desde hace más de un año diversificamos nuestro negocio abriendo un taller de reparación de vehículos con el fin de completar los servicios que actualmente ya ofrecíamos a nuestros clientes (como vehículos de ocasión), apostando por los mismos valores que nos definen. Nuestro principal objetivo es <strong>asegurar la satisfacción de nuestros clientes</strong> mediante un trato personalizado y asesoramiento particular adaptado a cada reparación.
+      </p>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
+
+    <!-- Image -->
+    <div class="relative">
+      <div class="rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl relative group max-w-lg mx-auto lg:mx-0">
+        <img alt="Interior de taller profesional con herramientas de precisión" class="w-full h-64 md:aspect-[4/3] md:h-auto object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" width="800" height="600"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuD85efJuypwL-7invjvC3R98uQ_vC0ZKPlF6lKIccgcAzGHPBZJKkOMin6gVKY5B-AJnZhxtp8WPHOL8JbyGIf7E_yIs3kfnGBqfVuTYwMQKXQfVqJud-XxpKf6mK9YHqYAOGBkTb6aa5g7kK6Na3r5oCk9patyguT1F8veOotzLmt1nWHBbb0m_8JbhvyhLA7llVv4hSWITqTk59nBDPBSC5rEAv6lW93VbH1uzHQOsqSCgyJc2X3XtPiriLmeN-XNg67EynV7BRY"/>
+        <div class="absolute top-4 left-4 z-10 px-3 py-1 bg-primary text-white text-[10px] font-bold uppercase tracking-widest rounded-full flex items-center gap-1.5 shadow-lg">
+          <span class="material-symbols-outlined text-[12px]" style='font-variation-settings:"FILL" 1;'>verified</span>
+          Calidad Certificada
+        </div>
+      </div>
+    </div>
+
+    <!-- Features (from mobile version) + CTAs -->
+    <div class="space-y-10 md:space-y-12">
+      <ul class="space-y-6 md:space-y-8">
+        <li class="flex items-start gap-4 md:gap-6">
+          <div class="flex-shrink-0 w-11 h-11 md:w-12 md:h-12 rounded-xl bg-white border border-zinc-200 flex items-center justify-center shadow-sm">
+            <span class="material-symbols-outlined text-primary text-2xl">verified</span>
+          </div>
+          <div>
+            <h4 class="font-bold text-sm md:text-base uppercase tracking-wide mb-1">Recambios Originales</h4>
+            <p class="text-zinc-500 text-sm leading-relaxed">Solo utilizamos piezas que cumplen con los estándares de fábrica.</p>
+          </div>
+        </li>
+        <li class="flex items-start gap-4 md:gap-6">
+          <div class="flex-shrink-0 w-11 h-11 md:w-12 md:h-12 rounded-xl bg-white border border-zinc-200 flex items-center justify-center shadow-sm">
+            <span class="material-symbols-outlined text-primary text-2xl">schedule</span>
+          </div>
+          <div>
+            <h4 class="font-bold text-sm md:text-base uppercase tracking-wide mb-1">Puntualidad Absoluta</h4>
+            <p class="text-zinc-500 text-sm leading-relaxed">Respetamos los plazos de entrega para no interrumpir tu día.</p>
+          </div>
+        </li>
+        <li class="flex items-start gap-4 md:gap-6">
+          <div class="flex-shrink-0 w-11 h-11 md:w-12 md:h-12 rounded-xl bg-white border border-zinc-200 flex items-center justify-center shadow-sm">
+            <span class="material-symbols-outlined text-primary text-2xl">euro</span>
+          </div>
+          <div>
+            <h4 class="font-bold text-sm md:text-base uppercase tracking-wide mb-1">Precios Transparentes</h4>
+            <p class="text-zinc-500 text-sm leading-relaxed">Presupuestos cerrados sin sorpresas en tu factura final.</p>
+          </div>
+        </li>
+      </ul>
+      <div class="flex flex-col sm:flex-row gap-4 pt-2">
+        <button onclick="openBooking()" class="bg-primary hover:bg-primary-container text-on-primary px-8 py-4 md:py-5 rounded-xl font-bold text-xs md:text-sm tracking-widest uppercase transition-all flex-1 flex items-center justify-center gap-3 active:scale-95">
+          <span class="material-symbols-outlined text-xl md:text-2xl">calendar_today</span>
+          PEDIR CITA ONLINE
+        </button>
+        <a class="flex-1 flex items-center justify-center gap-3 text-zinc-900 font-bold no-underline px-8 py-4 md:py-5 rounded-xl border-2 border-zinc-200 hover:border-primary transition-colors" href="tel:696103730">
+          <span class="material-symbols-outlined text-xl md:text-2xl text-primary">call</span>
+          <span class="text-base md:text-lg">696 10 37 30</span>
+        </a>
       </div>
     </div>
   </div>
-</section>
+</div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       CONTACT / LOCATION
+  ════════════════════════════════════════════ -->
+
+  <section class="py-16 md:py-24 bg-white px-6 md:px-8" id="visitanos">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="font-headline text-2xl md:text-4xl font-bold tracking-tighter text-on-surface mb-10 md:mb-12">Visítanos en Las Rozas</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-16 items-start lg:items-center">
+
+    <!-- Info + CTA -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="space-y-8 mb-10">
+        <div class="flex items-start gap-4 md:gap-6">
+          <span class="material-symbols-outlined text-primary text-2xl md:text-3xl mt-1 shrink-0">pin_drop</span>
+          <div>
+            <span class="text-primary font-bold text-xs tracking-widest uppercase mb-2 block">Dirección</span>
+            <address class="not-italic text-zinc-600 text-sm md:text-lg leading-relaxed">
+              C. Sofía, 4<br/>28232 Las Rozas de Madrid
+            </address>
+          </div>
+        </div>
+        <div class="flex items-start gap-4 md:gap-6">
+          <span class="material-symbols-outlined text-primary text-2xl md:text-3xl mt-1 shrink-0">schedule</span>
+          <div>
+            <p class="font-bold text-base md:text-xl text-zinc-900 mb-1">Horario de Taller</p>
+            <p class="text-zinc-600 text-sm md:text-lg leading-relaxed">
+              Lunes a Viernes: 09:00 – 18:00<br/>
+              <span class="text-xs uppercase tracking-wider font-bold text-zinc-400">Sábados y Domingos: Cerrado</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <a class="w-full bg-primary hover:bg-primary-container text-white py-4 md:py-5 rounded-xl font-bold text-xs tracking-widest uppercase transition-all flex items-center justify-center gap-3 shadow-xl active:scale-95 no-underline"
+        href="https://www.google.com/maps/dir/?api=1&destination=Calle+Sofía+4+28232+Las+Rozas+de+Madrid" rel="noopener noreferrer" target="_blank">
+        <span class="material-symbols-outlined">directions</span>
+        CÓMO LLEGAR
+      </a>
+    </div>
+
+    <!-- Map: square on mobile, 16:9 on desktop -->
+    <div class="lg:col-span-7 aspect-square md:aspect-video rounded-2xl md:rounded-3xl overflow-hidden shadow-inner bg-zinc-100 relative border-4 border-white shadow-2xl">
+      <iframe allowfullscreen="" height="100%" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3034.46467475143!2d-3.8967406!3d40.4871038!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd419b45e7519349%3A0x633d9876e65d21a!2sC.%20Sof%C3%ADa%2C%204%2C%2028232%20Las%20Rozas%20de%20Madrid%2C%20Spain!5e0!3m2!1sen!2sus!4v1715600000000!5m2!1sen!2sus"
+        style="border:0;" title="Mapa de ubicación Auto Solutions" width="100%">
+      </iframe>
+    </div>
+  </div>
+</div>
+
+  </section>
+
+</main>
 
 <!-- ═══════════════════════════════════════════
      FOOTER
 ════════════════════════════════════════════ -->
-<footer class="bg-white border-t border-zinc-200 py-16">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="flex flex-col md:flex-row justify-between items-center gap-10">
-      <div class="flex items-center gap-3">
-        <div class="w-8 h-8 bg-zinc-900 rounded-lg flex items-center justify-center text-white">
-          <span class="material-symbols-outlined text-sm font-bold">handyman</span>
+
+<footer class="w-full border-t border-zinc-200 bg-zinc-100 text-zinc-900">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-12 py-16 md:py-20 px-6 md:px-8 max-w-7xl mx-auto">
+    <!-- Brand -->
+    <div class="space-y-6">
+      <a class="flex items-center gap-2" href="./index.html">
+        <div class="w-8 h-8 bg-primary rounded flex items-center justify-center text-white">
+          <span class="material-symbols-outlined text-xl font-bold">handyman</span>
         </div>
-        <span class="text-lg font-black tracking-tighter uppercase">Auto Solutions</span>
+        <span class="text-xl font-bold tracking-tighter text-zinc-900 font-headline uppercase">Auto Solutions</span>
+      </a>
+      <p class="text-xs text-zinc-600 leading-relaxed font-medium">
+        Ingeniería de precisión y cuidado experto para tu vehículo en el corazón de Las Rozas desde hace más de 20 años.
+      </p>
+
+    </div>
+    <!-- Services -->
+    <nav aria-label="Servicios">
+      <h4 class="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-6 md:mb-8">Servicios</h4>
+      <ul class="space-y-3 md:space-y-4 text-sm font-medium">
+        <li><button class="text-zinc-600 hover:text-primary transition-colors text-left" onclick="openServiceModal('oil')">Mecánica Rápida</button></li>
+        <li><button class="text-zinc-600 hover:text-primary transition-colors text-left" onclick="openServiceModal('battery')">Electrónica</button></li>
+        <li><button class="text-zinc-600 hover:text-primary transition-colors text-left" onclick="openServiceModal('brakes')">Pre-ITV</button></li>
+        <li><button class="text-zinc-600 hover:text-primary transition-colors text-left" onclick="openServiceModal('brakes')">Frenos y Seguridad</button></li>
+      </ul>
+    </nav>
+    <!-- Company -->
+    <nav aria-label="Empresa">
+      <h4 class="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-6 md:mb-8">Empresa</h4>
+      <ul class="space-y-3 md:space-y-4 text-sm font-medium">
+        <li><a class="text-zinc-600 hover:text-primary transition-colors" href="#confiar">Taller</a></li>
+        <li><a class="text-zinc-600 hover:text-primary transition-colors" href="#visitanos">Contacto</a></li>
+      </ul>
+    </nav>
+    <!-- Contact -->
+    <div>
+      <h4 class="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-6 md:mb-8">Contacto Directo</h4>
+      <div class="flex items-center gap-4 mb-4">
+        <span class="material-symbols-outlined text-primary text-2xl">call</span>
+        <a class="text-base font-bold text-zinc-700 hover:text-primary transition-colors no-underline" href="tel:696103730">696 10 37 30</a>
       </div>
-      
-      <div class="flex gap-10 text-xs font-bold uppercase tracking-widest text-zinc-500">
-        <a href="./aviso-legal.html" class="hover:text-primary transition-colors">Aviso Legal</a>
-        <a href="./privacidad.html" class="hover:text-primary transition-colors">Privacidad</a>
-        <a href="./politica-de-cookies.html" class="hover:text-primary transition-colors">Cookies</a>
+      <div class="flex items-center gap-4 mb-4">
+        <span class="material-symbols-outlined text-primary text-2xl">mail</span>
+        <a class="text-base font-bold text-zinc-700 hover:text-primary transition-colors no-underline" href="mailto:info@autosolutions.es">info@autosolutions.es</a>
+      </div>
+      <div class="flex items-center gap-4">
+        <span class="material-symbols-outlined text-2xl text-primary">location_on</span>
+        <span class="text-sm font-medium text-zinc-600">Las Rozas (Európolis), Madrid</span>
       </div>
     </div>
-    <div class="mt-10 pt-10 border-t border-zinc-100 text-center">
-      <p class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">© 2026 Auto Solutions Car Service. Calidad y seguridad garantizada.</p>
+  </div>
+  <div class="max-w-7xl mx-auto px-6 md:px-8 pb-10 md:pb-12">
+    <div class="pt-8 border-t border-zinc-200 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-6">
+      <p class="text-xs text-zinc-500 font-medium text-center md:text-left">© 2026 Auto Solutions Car Service.</p>
+      <div class="flex gap-6 md:gap-8 text-xs text-zinc-500 font-medium">
+        <a class="hover:text-primary transition-colors" href="./aviso-legal.html">Aviso Legal</a>
+        <a class="hover:text-primary transition-colors" href="./privacidad.html">Privacidad</a>
+        <a class="hover:text-primary transition-colors" href="./politica-de-cookies.html">Cookies</a>
+      </div>
     </div>
   </div>
 </footer>
 
 <!-- ═══════════════════════════════════════════
-     MOBILE BOTTOM BAR (iOs Style)
+     FLOATING WHATSAPP (desktop only)
 ════════════════════════════════════════════ -->
-<nav class="md:hidden fixed bottom-0 left-0 w-full z-[100] p-4 glass-dark-nav" style="background: rgba(255,255,255,0.8); backdrop-filter: blur(20px);">
-  <div class="bg-zinc-900 rounded-2xl p-2 grid grid-cols-2 gap-2 shadow-2xl">
-    <button onclick="openBooking()" class="bg-primary text-white py-4 rounded-xl font-black text-[10px] tracking-widest flex items-center justify-center gap-2">
-      <span class="material-symbols-outlined text-sm">calendar_month</span>
-      PEDIR CITA
-    </button>
-    <a href="https://wa.me/34696103730" class="bg-zinc-800 text-white py-4 rounded-xl font-black text-[10px] tracking-widest flex items-center justify-center gap-2 no-underline">
-      <span class="material-symbols-outlined text-whatsapp text-sm">chat</span>
-      WHATSAPP
-    </a>
-  </div>
+
+<a aria-label="Contactar por WhatsApp" class="hidden md:flex fixed bottom-10 right-10 z-[100] bg-green-600 text-white px-6 py-4 rounded-full shadow-2xl hover:bg-green-700 transition-all hover:scale-110 active:scale-95 items-center gap-3 no-underline group"
+href="https://wa.me/34696103730?text=Hola,%20me%20gustaría%20solicitar%20información%20sobre%20vuestros%20servicios." rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-3xl">chat</span>
+<span class="font-bold tracking-tight text-sm hidden group-hover:block">WhatsApp</span>
+</a>
+
+<!-- ═══════════════════════════════════════════
+     BOTTOM NAV BAR (mobile only)
+════════════════════════════════════════════ -->
+
+<nav class="md:hidden fixed bottom-0 left-0 w-full grid grid-cols-2 bg-primary z-40 shadow-[0_-8px_20px_rgba(0,0,0,0.2)]" id="bottom-nav">
+  <button class="flex flex-col items-center justify-center py-4 text-white border-r border-white/10 active:bg-black/10" onclick="openBooking()">
+    <span class="material-symbols-outlined mb-1 text-2xl">calendar_month</span>
+    <span class="text-[10px] uppercase tracking-widest font-bold">PEDIR CITA</span>
+  </button>
+  <a class="flex flex-col items-center justify-center py-4 text-white active:bg-black/10 no-underline"
+    href="https://wa.me/34696103730">
+    <span class="material-symbols-outlined mb-1 text-2xl" style='font-variation-settings:"FILL" 1;'>chat</span>
+    <span class="text-[10px] uppercase tracking-widest font-bold">WHATSAPP</span>
+  </a>
 </nav>
 
 <!-- ═══════════════════════════════════════════
-     COMPONENTS (Modals)
+     MOBILE MENU MODAL (hamburger)
 ════════════════════════════════════════════ -->
 
-<!-- Service Modal -->
-<div id="service-modal" class="modal-overlay fixed inset-0 z-[110] bg-zinc-900/40 backdrop-blur-md flex items-center justify-center p-6">
-  <div class="modal-sheet bg-white rounded-[2.5rem] max-w-2xl w-full p-10 relative shadow-2xl">
-    <button onclick="closeServiceModal()" class="absolute top-6 right-6 text-zinc-400 hover:text-zinc-900 transition-colors">
-      <span class="material-symbols-outlined text-3xl">close</span>
+<div class="modal-overlay fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-end md:hidden" id="menu-modal" aria-modal="true">
+  <div class="modal-sheet w-full bg-white rounded-t-3xl p-8 max-h-[90vh] overflow-y-auto">
+    <div class="flex justify-between items-center mb-8">
+      <h2 class="font-headline text-2xl font-bold uppercase tracking-tight">Menú Principal</h2>
+      <button aria-label="Cerrar menú" class="material-symbols-outlined text-zinc-400 p-2" onclick="toggleMenu()">close</button>
+    </div>
+    <div class="grid grid-cols-1 gap-4 mb-8">
+      <button class="flex items-center justify-between p-4 bg-zinc-50 rounded-xl" onclick="scrollToSection('servicios')">
+        <div class="flex items-center gap-4">
+          <span class="material-symbols-outlined text-primary">oil_barrel</span>
+          <span class="font-bold">Servicios</span>
+        </div>
+        <span class="material-symbols-outlined text-zinc-300">chevron_right</span>
+      </button>
+      <button class="flex items-center justify-between p-4 bg-zinc-50 rounded-xl" onclick="scrollToSection('confiar')">
+        <div class="flex items-center gap-4">
+          <span class="material-symbols-outlined text-primary">verified</span>
+          <span class="font-bold">Taller</span>
+        </div>
+        <span class="material-symbols-outlined text-zinc-300">chevron_right</span>
+      </button>
+      <button class="flex items-center justify-between p-4 bg-zinc-50 rounded-xl" onclick="scrollToSection('visitanos')">
+        <div class="flex items-center gap-4">
+          <span class="material-symbols-outlined text-primary">location_on</span>
+          <span class="font-bold">Dónde Estamos</span>
+        </div>
+        <span class="material-symbols-outlined text-zinc-300">chevron_right</span>
+      </button>
+    </div>
+    <div class="pt-6 border-t border-zinc-100">
+      <a class="w-full bg-primary text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg no-underline" href="tel:696103730">
+        <span class="material-symbols-outlined">call</span>
+        LLAMAR AHORA
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SERVICE DETAIL MODAL
+════════════════════════════════════════════ -->
+
+<div aria-labelledby="service-title" class="modal-overlay fixed inset-0 z-[110] bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 md:p-6" id="service-modal" role="dialog" aria-modal="true">
+  <div class="modal-sheet bg-white rounded-2xl md:rounded-3xl max-w-xl w-full p-6 md:p-10 relative shadow-2xl">
+    <button aria-label="Cerrar" class="absolute top-4 right-4 md:top-6 md:right-6 text-zinc-400 hover:text-zinc-900 transition-colors" onclick="closeServiceModal()">
+      <span class="material-symbols-outlined text-2xl md:text-3xl">close</span>
     </button>
     <div id="service-modal-content"></div>
   </div>
 </div>
 
-<!-- Booking Modal -->
-<div id="booking-modal" class="modal-overlay fixed inset-0 z-[120] bg-zinc-900/60 backdrop-blur-md flex items-center justify-center p-4">
-  <div class="modal-sheet bg-white rounded-[2.5rem] max-w-2xl w-full shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
-    <div class="bg-zinc-900 p-8 text-white flex justify-between items-center">
-      <h3 class="text-2xl font-black tracking-tighter">Agenda tu Cita</h3>
-      <button onclick="closeBooking()" class="text-white/50 hover:text-white transition-colors">
-        <span class="material-symbols-outlined text-3xl">close</span>
-      </button>
-    </div>
-    <div class="p-8 overflow-y-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+<!-- ═══════════════════════════════════════════
+     BOOKING MODAL — interactive calendar
+════════════════════════════════════════════ -->
+
+<div aria-labelledby="booking-title" class="modal-overlay fixed inset-0 z-[120] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4" id="booking-modal" role="dialog" aria-modal="true">
+  <div class="modal-sheet bg-white rounded-2xl md:rounded-3xl max-w-2xl w-full shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
+    <!-- Header -->
+    <div class="bg-primary p-5 md:p-6 text-white flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span class="material-symbols-outlined text-2xl" style='font-variation-settings:"FILL" 1;'>calendar_month</span>
         <div>
-           <label class="text-[10px] font-black uppercase tracking-widest text-zinc-400 mb-6 block">1. Selecciona Fecha</label>
-           <div class="bg-zinc-50 p-6 rounded-3xl border border-zinc-200">
-             <div class="flex justify-between items-center mb-6">
-               <span id="cal-month-label" class="font-black text-zinc-900"></span>
-               <div class="flex gap-2">
-                 <button onclick="changeMonth(-1)" class="w-8 h-8 rounded-lg hover:bg-zinc-200 flex items-center justify-center"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
-                 <button onclick="changeMonth(1)" class="w-8 h-8 rounded-lg hover:bg-zinc-200 flex items-center justify-center"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
-               </div>
-             </div>
-             <div class="grid grid-cols-7 gap-1 text-[10px] font-black text-zinc-300 text-center mb-4">
-               <div>L</div><div>M</div><div>M</div><div>J</div><div>V</div><div>S</div><div>D</div>
-             </div>
-             <div id="cal-grid" class="grid grid-cols-7 gap-1"></div>
-           </div>
-        </div>
-        <div>
-           <label class="text-[10px] font-black uppercase tracking-widest text-zinc-400 mb-6 block">2. Horarios disponibles</label>
-           <div id="time-slots" class="grid grid-cols-2 gap-3"></div>
-           <div class="mt-12">
-             <button onclick="confirmBooking()" class="w-full bg-primary text-white py-5 rounded-2xl font-black text-sm tracking-widest uppercase shadow-xl hover:bg-primary-dark transition-all">
-               Confirmar Cita
-             </button>
-           </div>
+          <h3 class="font-headline text-lg font-bold" id="booking-title">Reserva tu Cita</h3>
+          <p class="text-xs opacity-80">Selecciona fecha y hora</p>
         </div>
       </div>
+      <button aria-label="Cerrar" class="text-white/70 hover:text-white transition-colors" onclick="closeBooking()">
+        <span class="material-symbols-outlined text-2xl">close</span>
+      </button>
     </div>
+
+<div class="overflow-y-auto scroll-hide p-5 md:p-8">
+  <!-- Service selector -->
+  <div class="mb-6">
+    <label class="block text-[10px] font-bold uppercase text-zinc-400 mb-2" for="booking-select">Servicio</label>
+    <select class="w-full border border-zinc-200 rounded-lg p-3 text-sm focus:ring-primary focus:border-primary" id="booking-select">
+      <option value="" disabled selected>Elige un servicio...</option>
+      <option>Revisión General</option>
+      <option>Aceite y Filtros</option>
+      <option>Frenos</option>
+      <option>Neumáticos</option>
+      <option>Aire Acondicionado</option>
+      <option>Diagnosis</option>
+    </select>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+    <!-- Calendar -->
+    <div>
+      <p class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-3">1. Selecciona Fecha</p>
+      <div class="bg-zinc-50 border border-zinc-100 rounded-2xl p-4">
+        <div class="flex justify-between items-center mb-4">
+          <span class="font-bold text-zinc-900 text-sm" id="cal-month-label"></span>
+          <div class="flex gap-1">
+            <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-zinc-200 transition-colors" id="cal-prev" onclick="changeMonth(-1)">
+              <span class="material-symbols-outlined text-sm">chevron_left</span>
+            </button>
+            <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-zinc-200 transition-colors" id="cal-next" onclick="changeMonth(1)">
+              <span class="material-symbols-outlined text-sm">chevron_right</span>
+            </button>
+          </div>
+        </div>
+        <div class="grid grid-cols-7 gap-1 text-center text-[10px] font-bold text-zinc-400 mb-2">
+          <div>L</div><div>M</div><div>M</div><div>J</div><div>V</div>
+          <div class="text-zinc-300">S</div><div class="text-zinc-300">D</div>
+        </div>
+        <div class="grid grid-cols-7 gap-1 text-center text-xs" id="cal-grid"></div>
+      </div>
+    </div>
+
+    <!-- Time slots -->
+    <div>
+      <p class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-3">2. Horarios Disponibles</p>
+      <div class="grid grid-cols-2 gap-2 md:gap-3" id="time-slots">
+        <!-- Injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Confirm button -->
+  <div class="mt-6 md:mt-8 pt-6 border-t border-zinc-100">
+    <button class="w-full bg-primary hover:bg-primary-container text-white py-4 md:py-5 rounded-xl font-bold tracking-widest uppercase transition-all shadow-xl active:scale-[0.98] text-sm" id="confirm-btn" onclick="confirmBooking()">
+      CONFIRMAR CITA
+    </button>
+  </div>
+</div>
+
   </div>
 </div>
 
 <script>
-  // Services Data
+  // ─── ACCESSIBILITY / FOCUS TRAP & SCROLL LOCK ──────────────────
+  function setPageInert(state) {
+    const els = document.querySelectorAll('header, main, footer, #bottom-nav, a[aria-label="Contactar por WhatsApp"]');
+    els.forEach(el => {
+      // Usamos inert nativo (soportado en >= 2023)
+      if (el) el.inert = state;
+    });
+    // Bloquear el desplazamiento visual de la página de fondo
+    document.body.style.overflow = state ? 'hidden' : '';
+  }
+
+  // ─── STATUS WIDGET ───────────────────────────────────────────────
+  function updateStatus() {
+    const widgets = [
+      { dot: 'status-dot-desktop', text: 'status-text-desktop' },
+      { dot: 'status-dot-mobile',  text: 'status-text-mobile'  },
+    ];
+    const now = new Date();
+    const day = now.getDay();
+    const t = now.getHours() + now.getMinutes() / 60;
+    const isOpenDay = day >= 1 && day <= 5;
+
+    widgets.forEach(({ dot, text }) => {
+      const d = document.getElementById(dot);
+      const t2 = document.getElementById(text);
+      if (!d || !t2) return;
+      d.classList.remove('bg-emerald-400', 'bg-yellow-400', 'bg-zinc-400', 'animate-pulse');
+      if (isOpenDay && t >= 9 && t < 17.5) {
+        d.classList.add('bg-emerald-400', 'animate-pulse');
+        t2.innerText = 'ABIERTO AHORA • DE 9:00 A 18:00';
+      } else if (isOpenDay && t >= 17.5 && t < 18) {
+        d.classList.add('bg-yellow-400');
+        t2.innerText = 'CIERRA PRONTO • A LAS 18:00';
+      } else if (isOpenDay && t >= 8.5 && t < 9) {
+        d.classList.add('bg-yellow-400');
+        t2.innerText = 'ABRE PRONTO • A LAS 9:00';
+      } else {
+        d.classList.add('bg-zinc-400');
+        t2.innerText = 'CERRADO AHORA • ABIERTO DE L-V DE 9H A 18H';
+      }
+    });
+  }
+
+  // ─── MOBILE BOTTOM NAV VISIBILITY ───────────────────────────────
+  function handleBottomNav() {
+    const nav = document.getElementById('bottom-nav');
+    const hero = document.getElementById('hero-mobile');
+    if (!nav || !hero) return;
+    // Use scrollY with a small threshold, works better in Chrome mobile
+    const threshold = hero.offsetHeight - 120;
+    if (window.scrollY > threshold) {
+      nav.classList.add('visible');
+    } else {
+      nav.classList.remove('visible');
+    }
+  }
+
+  // ─── MENU MODAL ─────────────────────────────────────────────────
+  function toggleMenu() {
+    const modal = document.getElementById('menu-modal');
+    const isExpanded = modal.classList.toggle('active');
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    if (menuBtn) {
+      menuBtn.setAttribute('aria-expanded', isExpanded);
+    }
+    setPageInert(isExpanded);
+    if(isExpanded) {
+      setTimeout(() => {
+        const closeBtn = modal.querySelector('button');
+        if(closeBtn) closeBtn.focus();
+      }, 50);
+    }
+  }
+  function scrollToSection(id) {
+    const el = document.getElementById(id);
+    if (el) { el.scrollIntoView({ behavior: 'smooth' }); }
+    document.getElementById('menu-modal').classList.remove('active');
+    setPageInert(false);
+  }
+
+  // ─── SERVICE MODAL ───────────────────────────────────────────────
   const servicesData = {
-    oil: { title: "Mecánica Rápida", icon: "oil_barrel", desc: "Revisiones completas para mantener tu motor en perfecto estado. Cambios de aceite premium y filtros certificados.", features: ["Aceite sintético", "Filtro de aire y aceite", "Reset de avisos", "Revisión de niveles"] },
-    brakes: { title: "Seguridad y Frenos", icon: "album", desc: "Especialistas en sistemas de frenado. Inspeccionamos pastillas, discos y líquido de frenos.", features: ["Pastillas de freno", "Discos de freno", "Líquido de frenos", "Diagnosis ABS"] },
-    tires: { title: "Neumáticos", icon: "tire_repair", desc: "Seguridad total en el asfalto. Trabajamos con las mejores marcas y alineación por ordenador.", features: ["Montaje y equilibrado", "Alineación 3D", "Inflado con nitrógeno", "Válvulas nuevas"] }
+    oil:     { title: "Aceite y Filtros",       icon: "oil_barrel",        desc: "Mantenimiento preventivo esencial para garantizar la lubricación óptima. Incluye vaciado, filtro y niveles de cortesía.", features: ["Aceite sintético Premium", "Filtros certificados", "Revisión de 15 puntos"] },
+    brakes:  { title: "Sistema de Frenos",      icon: "album",             desc: "Inspeccionamos pastillas, discos y líquido de frenos garantizando una frenada equilibrada y segura.", features: ["Sustitución de pastillas", "Rectificado de discos", "Purga de circuito"] },
+    tires:   { title: "Neumáticos y Alineación",icon: "tire_repair",       desc: "Agarre perfecto y desgaste uniforme mediante alineación 3D computarizada con las mejores marcas.", features: ["Montaje y equilibrado", "Alineación 3D", "Inflado con Nitrógeno"] },
+    ac:      { title: "Aire Acondicionado",     icon: "ac_unit",           desc: "Carga de gas R134a/R1234yf y desinfección de conductos con ozono para eliminar olores y bacterias.", features: ["Recarga de gas", "Detección de fugas", "Tratamiento anti-bacterias"] },
+    battery: { title: "Diagnosis y Baterías",   icon: "battery_charging_80", desc: "Localización de averías electrónicas y sustitución de baterías de alta capacidad para todos los vehículos.", features: ["Borrado de errores", "Test de alternador", "Instalación incluida"] },
   };
 
   function openServiceModal(key) {
     const d = servicesData[key];
     document.getElementById('service-modal-content').innerHTML = `
-      <div class="flex items-center gap-6 mb-8">
-        <div class="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center">
-          <span class="material-symbols-outlined text-3xl">${d.icon}</span>
+      <div class="flex items-center gap-4 mb-5">
+        <div class="w-12 h-12 md:w-14 md:h-14 bg-primary/10 rounded-2xl flex items-center justify-center text-primary">
+          <span class="material-symbols-outlined text-2xl md:text-3xl">${d.icon}</span>
         </div>
-        <h4 class="text-3xl font-black tracking-tighter text-zinc-900">${d.title}</h4>
+        <h3 class="font-headline text-xl md:text-3xl font-bold text-zinc-900" id="service-title">${d.title}</h3>
       </div>
-      <p class="text-zinc-600 text-lg leading-relaxed mb-10">${d.desc}</p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
-        ${d.features.map(f => `<div class="flex items-center gap-3 font-bold text-zinc-900 text-sm"><span class="material-symbols-outlined text-primary text-xl">check_circle</span>${f}</div>`).join('')}
+      <p class="text-zinc-600 text-sm md:text-lg leading-relaxed mb-6">${d.desc}</p>
+      <div class="space-y-3 mb-8">
+        ${d.features.map(f => `
+          <div class="flex items-center gap-3 text-zinc-900 font-medium text-sm">
+            <span class="material-symbols-outlined text-emerald-500" style='font-variation-settings:"FILL" 1;'>check_circle</span>${f}
+          </div>`).join('')}
       </div>
-      <button onclick="closeServiceModal(); openBooking('${d.title}')" class="w-full bg-zinc-900 text-white py-5 rounded-2xl font-black text-sm tracking-widest uppercase hover:bg-primary transition-all">RESERVAR ESTE SERVICIO</button>
-    `;
+      <div class="flex flex-col sm:flex-row gap-3">
+        <button onclick="closeServiceModal(); openBooking('${d.title}')" class="flex-1 bg-primary hover:bg-primary-container text-white px-6 py-4 rounded-xl font-bold text-xs tracking-widest uppercase transition-all">
+          PEDIR CITA
+        </button>
+        <a href="https://wa.me/34696103730?text=Hola,%20vengo%20desde%20la%20web,%20quiero%20pedir%20cita%20directa%20para%20${encodeURIComponent(d.title)}." target="_blank" rel="noopener noreferrer" class="flex-1 bg-whatsapp hover:brightness-110 text-white px-6 py-4 rounded-xl font-bold text-xs tracking-widest uppercase transition-all flex items-center justify-center gap-2 no-underline">
+          <span class="material-symbols-outlined text-lg">chat</span> WHATSAPP
+        </a>
+      </div>`;
     document.getElementById('service-modal').classList.add('active');
+    setPageInert(true);
+    setTimeout(() => {
+      const closeBtn = document.querySelector('#service-modal button');
+      if (closeBtn) closeBtn.focus();
+    }, 50);
+  }
+  function closeServiceModal() {
+    document.getElementById('service-modal').classList.remove('active');
+    setPageInert(false);
   }
 
-  function closeServiceModal() { document.getElementById('service-modal').classList.remove('active'); }
+  // ─── BOOKING / CALENDAR ─────────────────────────────────────────
+  const MONTHS_ES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  const TIME_SLOTS = ['09:00','10:30','12:00','13:30','16:00','17:00'];
+  const UNAVAILABLE = ['16:00']; // mock unavailable
 
-  // Booking Logic
   let calYear, calMonth, selectedDate, selectedTime;
-  const TIME_SLOTS = ['09:00','10:30','12:00','13:30','16:00','17:30'];
 
   function initCalendar() {
     const today = new Date();
-    calYear = today.getFullYear();
+    today.setHours(0,0,0,0);
+    calYear  = today.getFullYear();
     calMonth = today.getMonth();
-    selectedDate = today;
+    
+    // Find next available business day
+    let nextAvailable = new Date(today);
+    while(nextAvailable.getDay() === 0 || nextAvailable.getDay() === 6) {
+      nextAvailable.setDate(nextAvailable.getDate() + 1);
+    }
+    
+    selectedDate = nextAvailable;
     selectedTime = TIME_SLOTS[0];
     renderCalendar();
     renderTimeSlots();
+    updateConfirmBtn();
   }
 
   function renderCalendar() {
+    document.getElementById('cal-month-label').textContent =
+      MONTHS_ES[calMonth] + ' ' + calYear;
+
     const grid = document.getElementById('cal-grid');
-    document.getElementById('cal-month-label').innerText = new Intl.DateTimeFormat('es-ES', { month: 'long', year: 'numeric' }).format(new Date(calYear, calMonth));
     grid.innerHTML = '';
-    const firstDay = new Date(calYear, calMonth, 1).getDay();
+
+    const today = new Date();
+    today.setHours(0,0,0,0);
+
+    // First day of month (adjust so week starts Monday)
+    const firstDay = new Date(calYear, calMonth, 1).getDay(); // 0=Sun
+    const startOffset = (firstDay === 0) ? 6 : firstDay - 1;
+
+    // Days in month
     const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
-    const offset = (firstDay === 0) ? 6 : firstDay - 1;
-    for (let i = 0; i < offset; i++) grid.innerHTML += '<div></div>';
+
+    // Empty cells before 1st
+    for (let i = 0; i < startOffset; i++) {
+      grid.innerHTML += `<div></div>`;
+    }
+
     for (let d = 1; d <= daysInMonth; d++) {
       const date = new Date(calYear, calMonth, d);
-      const isPast = date < new Date().setHours(0,0,0,0);
-      const isWeekend = date.getDay() === 0 || date.getDay() === 6;
-      const isSelected = selectedDate && date.toDateString() === selectedDate.toDateString();
-      grid.innerHTML += `<button onclick="!${isPast || isWeekend} && selectDate(${d})" class="aspect-square flex items-center justify-center rounded-xl text-xs font-black ${isPast || isWeekend ? 'text-zinc-200' : isSelected ? 'bg-primary text-white' : 'hover:bg-zinc-100 text-zinc-900'}">${d}</button>`;
+      date.setHours(0,0,0,0);
+      const dow = date.getDay(); // 0=Sun, 6=Sat
+      const isPast    = date < today;
+      const isWeekend = dow === 0 || dow === 6;
+      const isToday   = date.getTime() === today.getTime();
+      const isSelected = selectedDate && date.getTime() === new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate()).setHours(0,0,0,0);
+
+      let cls = 'cal-day aspect-square flex items-center justify-center text-xs outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ';
+      if (isPast || isWeekend) cls += 'cal-day--disabled opacity-50 ';
+      else if (isSelected)     cls += 'cal-day--selected ';
+      else if (isToday)        cls += 'cal-day--today ';
+
+      const onclick = (!isPast && !isWeekend) ? `onclick="selectDate(${calYear},${calMonth},${d})"` : 'disabled';
+      grid.innerHTML += `<button type="button" class="${cls}" ${onclick}>${d}</button>`;
     }
   }
 
-  function changeMonth(delta) { calMonth += delta; renderCalendar(); }
-  function selectDate(d) { selectedDate = new Date(calYear, calMonth, d); renderCalendar(); }
+  function changeMonth(delta) {
+    calMonth += delta;
+    if (calMonth > 11) { calMonth = 0; calYear++; }
+    if (calMonth < 0)  { calMonth = 11; calYear--; }
+    renderCalendar();
+  }
+
+  function selectDate(y, m, d) {
+    selectedDate = new Date(y, m, d);
+    renderCalendar();
+    updateConfirmBtn();
+  }
+
   function renderTimeSlots() {
-    document.getElementById('time-slots').innerHTML = TIME_SLOTS.map(t => `<button onclick="selectTime('${t}')" class="py-4 border-2 rounded-2xl font-black text-[10px] tracking-widest uppercase transition-all ${t === selectedTime ? 'border-primary bg-primary/5 text-primary' : 'border-zinc-200 text-zinc-400 hover:border-zinc-300'}">${t}</button>`).join('');
+    const container = document.getElementById('time-slots');
+    container.innerHTML = TIME_SLOTS.map(t => {
+      const unavail = UNAVAILABLE.includes(t);
+      const selected = t === selectedTime;
+      let cls = 'py-3 border-2 rounded-xl font-bold text-sm transition-colors outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ';
+      if (unavail)       cls += 'time-slot--disabled border-zinc-100 ';
+      else if (selected) cls += 'time-slot--selected border-primary bg-primary/5 text-primary ';
+      else               cls += 'border-zinc-100 text-zinc-600 hover:border-zinc-300 ';
+      return `<button class="${cls}" ${unavail ? 'aria-disabled="true"' : `onclick="selectTime('${t}')"`}>${t}</button>`;
+    }).join('');
   }
-  function selectTime(t) { selectedTime = t; renderTimeSlots(); }
 
-  function openBooking() { document.getElementById('booking-modal').classList.add('active'); initCalendar(); }
-  function closeBooking() { document.getElementById('booking-modal').classList.remove('active'); }
-  function confirmBooking() { alert('✅ Cita solicitada. Te llamaremos pronto.'); closeBooking(); }
-
-  initCalendar();
-
-  function toggleMenu() {
-    // Menu mobile logic
+  function selectTime(t) {
+    selectedTime = t;
+    renderTimeSlots();
+    updateConfirmBtn();
   }
+
+  function updateConfirmBtn() {
+    const btn = document.getElementById('confirm-btn');
+    if (!btn) return;
+    if (selectedDate && selectedTime) {
+      const d = selectedDate;
+      const label = `${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}/${d.getFullYear()}`;
+      btn.innerHTML = `<span class="block">CONFIRMAR CITA</span><span class="block text-xs font-normal opacity-80 mt-0.5 normal-case tracking-normal">${label} · ${selectedTime}</span>`;
+    } else {
+      btn.innerHTML = `<span class="block">CONFIRMAR CITA</span>`;
+    }
+  }
+
+  function openBooking(service = '') {
+    if (service) {
+      const sel = document.getElementById('booking-select');
+      if (sel) {
+        for (let opt of sel.options) {
+          if (opt.value === service || opt.text === service) { sel.value = opt.value; break; }
+        }
+      }
+    }
+    document.getElementById('booking-modal').classList.add('active');
+    document.getElementById('menu-modal').classList.remove('active');
+    document.getElementById('service-modal').classList.remove('active');
+    setPageInert(true);
+    setTimeout(() => {
+      const closeBtn = document.querySelector('#booking-modal button');
+      if(closeBtn) closeBtn.focus();
+    }, 50);
+  }
+
+  function closeBooking() {
+    document.getElementById('booking-modal').classList.remove('active');
+    setPageInert(false);
+  }
+
+  function confirmBooking() {
+    if (!selectedDate || !selectedTime) return;
+    const d = selectedDate;
+    const label = `${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}/${d.getFullYear()}`;
+    alert(`✅ Solicitud recibida\n\nServicio: ${document.getElementById('booking-select').value}\nFecha: ${label}\nHora: ${selectedTime}\n\nEn breve nos pondremos en contacto contigo para confirmar.`);
+    closeBooking();
+  }
+
+  // ─── INIT ────────────────────────────────────────────────────────
+  document.addEventListener('DOMContentLoaded', () => {
+    updateStatus();
+    setInterval(updateStatus, 60000);
+    initCalendar();
+    window.addEventListener('scroll', handleBottomNav);
+    handleBottomNav();
+
+    // Close modals on overlay click
+    document.querySelectorAll('.modal-overlay').forEach(m => {
+      m.addEventListener('click', e => {
+        if (e.target === m) {
+          m.classList.remove('active');
+          setPageInert(false);
+        }
+      });
+    });
+  });
 </script>
+
 </body>
 </html>
