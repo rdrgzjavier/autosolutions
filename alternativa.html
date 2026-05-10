@@ -3,32 +3,30 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Auto Solutions | Taller de Precisión en Las Rozas</title>
+<title>Auto Solutions | Taller de Mecánica en Las Rozas</title>
 <meta name="theme-color" content="#ab0014" />
-<meta content="Mecánica de precisión y cuidado experto en Las Rozas. Más de 15 años garantizando tu seguridad al volante." name="description"/>
+<meta content="Mecánica de confianza en Las Rozas. Más de 15 años de experiencia técnica con un trato cercano y profesional." name="description"/>
 
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<!-- Fonts: Inter for max readability (WCAG friendly) -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <!-- Icons -->
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <!-- Tailwind -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script>
   tailwind.config = {
-    darkMode: "class",
     theme: {
       extend: {
         colors: {
-          "surface": "#ffffff",
           "primary": "#ab0014",
           "primary-dark": "#8b0010",
-          "secondary": "#1a1c1c",
-          "zinc-950": "#09090b",
+          "zinc-900": "#18181b",
+          "zinc-600": "#52525b",
+          "zinc-100": "#f4f4f5",
           "whatsapp": "#25D366",
         },
         fontFamily: {
-          "headline": ["Outfit", "sans-serif"],
-          "body": ["Inter", "sans-serif"],
+          "sans": ["Inter", "sans-serif"],
         },
       },
     },
@@ -39,53 +37,44 @@
     --primary: #ab0014;
   }
   .material-symbols-outlined {
-    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
   }
-  .glass {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+  
+  /* iOs Liquid Glass Header */
+  .liquid-glass {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   }
-  .glass-dark {
-    background: rgba(10, 10, 10, 0.8);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+
+  /* Service Card Hover Effect (User liked this) */
+  .service-card {
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 1px solid #e4e4e7;
+    background: #ffffff;
   }
-  .hero-gradient {
-    background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
-  }
-  .section-reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .section-reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .card-hover {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .card-hover:hover {
+  .service-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary);
   }
-  .text-glow {
-    text-shadow: 0 0 20px rgba(171, 0, 20, 0.4);
+  .service-card:hover .icon-box {
+    background: var(--primary);
+    color: #ffffff;
+    transform: scale(1.1);
   }
-  .btn-primary {
-    @apply bg-primary text-white px-8 py-4 rounded-xl font-bold transition-all hover:bg-primary-dark hover:scale-105 active:scale-95 shadow-lg shadow-primary/20;
-  }
-  /* Custom scrollbar */
-  ::-webkit-scrollbar { width: 8px; }
-  ::-webkit-scrollbar-track { background: #f1f1f1; }
-  ::-webkit-scrollbar-thumb { background: #ab0014; border-radius: 10px; }
-  ::-webkit-scrollbar-thumb:hover { background: #8b0010; }
+
+  /* Accessibility & Contrast */
+  .text-balance { text-wrap: balance; }
+  
+  /* Navigation Fixes */
+  html { scroll-behavior: smooth; }
 
   /* Calendar styles from index */
   .cal-day:hover:not(.cal-day--disabled):not(.cal-day--selected) { background: #f4f4f4; }
   .cal-day--selected { background: #ab0014 !important; color: white !important; }
-  .cal-day--today { font-weight: 700; border: 2px solid #3f3f46; color: #ab0014; }
+  .cal-day--today { font-weight: 700; border: 2px solid #18181b; color: #ab0014; }
   .cal-day--disabled { color: #d1d5db; cursor: default; pointer-events: none; }
   .cal-day { cursor: pointer; border-radius: 0.5rem; transition: background 0.15s; border: 2px solid transparent; }
   
@@ -95,41 +84,39 @@
   .modal-overlay.active .modal-sheet { transform: translateY(0); }
 </style>
 </head>
-<body class="bg-surface font-body text-secondary antialiased overflow-x-hidden">
+<body class="bg-white text-zinc-900 font-sans antialiased overflow-x-hidden">
 
 <!-- ═══════════════════════════════════════════
-     HEADER
+     HEADER (Liquid Glass)
 ════════════════════════════════════════════ -->
-<header id="main-header" class="fixed top-0 w-full z-[100] transition-all duration-500 py-4 px-6 md:px-12">
-  <nav class="max-w-7xl mx-auto flex justify-between items-center glass rounded-2xl px-6 py-3 shadow-sm border border-white/20">
+<header class="fixed top-0 w-full z-[100] liquid-glass">
+  <nav class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
     <!-- Brand -->
-    <a href="#" class="flex items-center gap-3 group">
-      <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/30 group-hover:rotate-12 transition-transform">
+    <a href="#" class="flex items-center gap-3">
+      <div class="w-9 h-9 bg-primary rounded-lg flex items-center justify-center text-white shadow-md">
         <span class="material-symbols-outlined font-bold">handyman</span>
       </div>
-      <div class="flex flex-col">
-        <span class="text-xl font-extrabold tracking-tighter text-secondary font-headline uppercase leading-none">Auto Solutions</span>
-        <span class="text-[10px] font-bold text-primary tracking-[0.2em] uppercase">Car Service</span>
-      </div>
+      <span class="text-xl font-black tracking-tighter uppercase">Auto Solutions</span>
     </a>
 
-    <!-- Nav links -->
+    <!-- Desktop Nav -->
     <div class="hidden lg:flex items-center space-x-10">
-      <a href="#servicios" class="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors">Servicios</a>
-      <a href="#experiencia" class="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors">Nosotros</a>
-      <a href="#contacto" class="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors">Contacto</a>
-      <a href="tel:696103730" class="flex items-center gap-2 text-primary font-black text-lg">
-        <span class="material-symbols-outlined">call</span>
+      <a href="#servicios" class="text-xs font-bold uppercase tracking-widest text-zinc-600 hover:text-primary transition-colors">Servicios</a>
+      <a href="#experiencia" class="text-xs font-bold uppercase tracking-widest text-zinc-600 hover:text-primary transition-colors">Nosotros</a>
+      <a href="#contacto" class="text-xs font-bold uppercase tracking-widest text-zinc-600 hover:text-primary transition-colors">Ubicación</a>
+      <div class="h-4 w-[1px] bg-zinc-200"></div>
+      <a href="tel:696103730" class="flex items-center gap-2 text-zinc-900 font-extrabold">
+        <span class="material-symbols-outlined text-primary">call</span>
         696 10 37 30
       </a>
     </div>
 
     <!-- Right Actions -->
     <div class="flex items-center gap-4">
-      <button onclick="openBooking()" class="hidden md:block bg-primary text-white px-6 py-2.5 rounded-xl font-bold text-xs tracking-widest uppercase hover:bg-primary-dark transition-all">
+      <button onclick="openBooking()" class="hidden md:block bg-zinc-900 text-white px-6 py-2.5 rounded-full font-bold text-xs tracking-widest uppercase hover:bg-primary transition-all">
         Pedir Cita
       </button>
-      <button onclick="toggleMenu()" class="lg:hidden text-secondary p-2">
+      <button onclick="toggleMenu()" class="lg:hidden text-zinc-900 p-2">
         <span class="material-symbols-outlined text-3xl">menu</span>
       </button>
     </div>
@@ -137,62 +124,43 @@
 </header>
 
 <!-- ═══════════════════════════════════════════
-     HERO SECTION
+     HERO SECTION (High Contrast & Energy)
 ════════════════════════════════════════════ -->
-<section class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-zinc-900">
-  <!-- Background Image -->
-  <div class="absolute inset-0">
-    <img src="./img/hero-premium.png" alt="Taller Premium" class="w-full h-full object-cover opacity-60">
-    <div class="absolute inset-0 hero-gradient"></div>
-  </div>
-
-  <div class="relative max-w-7xl mx-auto px-6 md:px-12 w-full">
-    <div class="max-w-2xl text-white">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 border border-primary/30 text-primary-container text-xs font-bold uppercase tracking-widest mb-6 animate-pulse">
-        <span class="relative flex h-2 w-2">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-        </span>
-        Taller Abierto • Las Rozas
+<section class="relative pt-40 pb-20 md:pt-52 md:pb-32 bg-zinc-50 overflow-hidden">
+  <!-- Decorative background elements -->
+  <div class="absolute top-0 right-0 -mr-20 -mt-20 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px]"></div>
+  
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <div class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[11px] font-black uppercase tracking-widest mb-8 border border-primary/20">
+          Taller de confianza en Las Rozas
+        </div>
+        <h1 class="text-5xl md:text-7xl font-black text-zinc-900 tracking-tighter leading-[1] mb-8 text-balance">
+          Mecánica de precisión con trato <span class="text-primary underline decoration-zinc-200 underline-offset-8">humano</span>.
+        </h1>
+        <p class="text-xl text-zinc-600 mb-10 max-w-xl leading-relaxed">
+          Más de 15 años cuidando cada detalle de tu seguridad. Ingeniería experta, transparencia absoluta y recambios certificados.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <button onclick="openBooking()" class="bg-primary text-white px-10 py-5 rounded-2xl font-black text-sm tracking-widest uppercase hover:bg-primary-dark transition-all shadow-xl shadow-primary/20">
+            Reservar Cita Ahora
+          </button>
+          <a href="https://wa.me/34696103730" class="bg-white text-zinc-900 border-2 border-zinc-200 px-10 py-5 rounded-2xl font-black text-sm tracking-widest uppercase hover:border-zinc-900 transition-all flex items-center justify-center gap-3">
+            <span class="material-symbols-outlined text-whatsapp font-bold">chat</span>
+            WhatsApp Directo
+          </a>
+        </div>
       </div>
-      <h1 class="font-headline text-5xl md:text-8xl font-black tracking-tighter mb-6 leading-[0.9]">
-        Ingeniería de <span class="text-primary text-glow">Precisión</span>.
-      </h1>
-      <p class="text-lg md:text-xl text-zinc-300 mb-10 leading-relaxed font-light">
-        No solo arreglamos coches, cuidamos de tu seguridad. Más de 15 años de experiencia técnica en el corazón de Európolis.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4">
-        <button onclick="openBooking()" class="bg-primary text-white px-10 py-5 rounded-2xl font-bold text-sm tracking-widest uppercase hover:bg-primary-dark transition-all flex items-center justify-center gap-3 shadow-2xl shadow-primary/40">
-          <span class="material-symbols-outlined">calendar_today</span>
-          Reservar Cita Ahora
-        </button>
-        <a href="https://wa.me/34696103730" class="glass-dark border border-white/10 text-white px-10 py-5 rounded-2xl font-bold text-sm tracking-widest uppercase hover:bg-white/10 transition-all flex items-center justify-center gap-3">
-          <span class="material-symbols-outlined text-whatsapp">chat</span>
-          WhatsApp Directo
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Stats Floating -->
-  <div class="absolute bottom-12 left-0 right-0 hidden md:block">
-    <div class="max-w-7xl mx-auto px-12">
-      <div class="grid grid-cols-4 gap-8 glass-dark p-8 rounded-3xl border border-white/10">
-        <div class="text-center border-r border-white/10">
-          <div class="text-3xl font-black text-primary font-headline">15+</div>
-          <div class="text-[10px] text-zinc-400 uppercase tracking-widest font-bold">Años de Trayectoria</div>
+      
+      <div class="relative">
+        <div class="rounded-[2.5rem] overflow-hidden shadow-3xl border-8 border-white">
+          <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?q=80&w=1200" alt="Mecánico trabajando" class="w-full aspect-[4/3] object-cover">
         </div>
-        <div class="text-center border-r border-white/10">
-          <div class="text-3xl font-black text-white font-headline">5k+</div>
-          <div class="text-[10px] text-zinc-400 uppercase tracking-widest font-bold">Clientes Satisfechos</div>
-        </div>
-        <div class="text-center border-r border-white/10">
-          <div class="text-3xl font-black text-white font-headline">100%</div>
-          <div class="text-[10px] text-zinc-400 uppercase tracking-widest font-bold">Garantía Técnica</div>
-        </div>
-        <div class="text-center">
-          <div class="text-3xl font-black text-primary font-headline">24h</div>
-          <div class="text-[10px] text-zinc-400 uppercase tracking-widest font-bold">Respuesta Media</div>
+        <!-- Floating trust badge -->
+        <div class="absolute -bottom-10 -left-10 bg-zinc-900 text-white p-8 rounded-3xl shadow-2xl hidden md:block">
+          <div class="text-4xl font-black text-primary">15+</div>
+          <div class="text-xs font-bold uppercase tracking-widest opacity-60">Años de experiencia</div>
         </div>
       </div>
     </div>
@@ -200,74 +168,52 @@
 </section>
 
 <!-- ═══════════════════════════════════════════
-     SERVICES SECTION
+     SERVICES SECTION (Uniform Cards)
 ════════════════════════════════════════════ -->
-<section id="servicios" class="py-24 md:py-32 bg-surface">
-  <div class="max-w-7xl mx-auto px-6 md:px-12">
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-      <div class="max-w-2xl">
-        <h4 class="text-primary font-bold uppercase tracking-[0.3em] text-xs mb-4">Nuestros Servicios</h4>
-        <h2 class="font-headline text-4xl md:text-6xl font-black tracking-tighter text-secondary leading-tight">
-          Cuidado integral para tu vehículo.
-        </h2>
-      </div>
-      <p class="text-zinc-500 font-medium max-w-sm">
-        Utilizamos maquinaria de última generación y recambios certificados para garantizar un rendimiento óptimo.
-      </p>
+<section id="servicios" class="py-24 md:py-32 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center max-w-3xl mx-auto mb-20">
+      <h2 class="text-xs font-black uppercase tracking-[0.4em] text-primary mb-6">Nuestra especialidad</h2>
+      <h3 class="text-4xl md:text-5xl font-black text-zinc-900 tracking-tighter">Servicios mecánicos de alta calidad.</h3>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <!-- Service Card -->
-      <div onclick="openServiceModal('oil')" class="group cursor-pointer">
-        <div class="bg-zinc-50 p-10 rounded-[2.5rem] border border-zinc-100 card-hover relative overflow-hidden h-full">
-          <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
-            <span class="material-symbols-outlined text-8xl">oil_barrel</span>
-          </div>
-          <div class="w-16 h-16 bg-white shadow-xl rounded-2xl flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-white transition-all duration-500">
-            <span class="material-symbols-outlined text-3xl">oil_barrel</span>
-          </div>
-          <h3 class="text-2xl font-bold font-headline mb-4 text-secondary">Mecánica Rápida</h3>
-          <p class="text-zinc-500 leading-relaxed mb-8">Cambios de aceite, filtros y revisiones preventivas con diagnosis digital completa.</p>
-          <div class="flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-widest">
-            Saber más
-            <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_right_alt</span>
-          </div>
+      <div onclick="openServiceModal('oil')" class="service-card p-10 rounded-[2rem] cursor-pointer group">
+        <div class="icon-box w-16 h-16 bg-zinc-100 rounded-2xl flex items-center justify-center text-zinc-900 mb-8 transition-all duration-500">
+          <span class="material-symbols-outlined text-3xl">oil_barrel</span>
+        </div>
+        <h4 class="text-2xl font-black text-zinc-900 mb-4">Mecánica Rápida</h4>
+        <p class="text-zinc-600 leading-relaxed mb-8">Mantenimiento preventivo completo con diagnosis digital para asegurar la vida útil de tu motor.</p>
+        <div class="flex items-center gap-2 text-primary font-black text-xs uppercase tracking-widest">
+          Ver detalles
+          <span class="material-symbols-outlined text-sm group-hover:translate-x-2 transition-transform">arrow_right_alt</span>
         </div>
       </div>
 
       <!-- Service Card -->
-      <div onclick="openServiceModal('brakes')" class="group cursor-pointer">
-        <div class="bg-zinc-950 p-10 rounded-[2.5rem] border border-white/5 card-hover relative overflow-hidden h-full">
-          <div class="absolute top-0 right-0 p-8 opacity-10">
-            <span class="material-symbols-outlined text-8xl text-white">album</span>
-          </div>
-          <div class="w-16 h-16 bg-primary shadow-xl rounded-2xl flex items-center justify-center text-white mb-8 group-hover:scale-110 transition-all duration-500">
-            <span class="material-symbols-outlined text-3xl">album</span>
-          </div>
-          <h3 class="text-2xl font-bold font-headline mb-4 text-white">Seguridad y Frenado</h3>
-          <p class="text-zinc-400 leading-relaxed mb-8">Especialistas en sistemas de frenado, ABS y control de estabilidad para una seguridad total.</p>
-          <div class="flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-widest">
-            Saber más
-            <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_right_alt</span>
-          </div>
+      <div onclick="openServiceModal('brakes')" class="service-card p-10 rounded-[2rem] cursor-pointer group">
+        <div class="icon-box w-16 h-16 bg-zinc-100 rounded-2xl flex items-center justify-center text-zinc-900 mb-8 transition-all duration-500">
+          <span class="material-symbols-outlined text-3xl">album</span>
+        </div>
+        <h4 class="text-2xl font-black text-zinc-900 mb-4">Seguridad y Frenos</h4>
+        <p class="text-zinc-600 leading-relaxed mb-8">Inspección de pastillas, discos y sistemas ABS. Frenada segura para ti y tu familia.</p>
+        <div class="flex items-center gap-2 text-primary font-black text-xs uppercase tracking-widest">
+          Ver detalles
+          <span class="material-symbols-outlined text-sm group-hover:translate-x-2 transition-transform">arrow_right_alt</span>
         </div>
       </div>
 
       <!-- Service Card -->
-      <div onclick="openServiceModal('tires')" class="group cursor-pointer">
-        <div class="bg-zinc-50 p-10 rounded-[2.5rem] border border-zinc-100 card-hover relative overflow-hidden h-full">
-          <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
-            <span class="material-symbols-outlined text-8xl">tire_repair</span>
-          </div>
-          <div class="w-16 h-16 bg-white shadow-xl rounded-2xl flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-white transition-all duration-500">
-            <span class="material-symbols-outlined text-3xl">tire_repair</span>
-          </div>
-          <h3 class="text-2xl font-bold font-headline mb-4 text-secondary">Neumáticos</h3>
-          <p class="text-zinc-500 leading-relaxed mb-8">Alineación 3D, equilibrado y las mejores marcas para garantizar el máximo agarre.</p>
-          <div class="flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-widest">
-            Saber más
-            <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_right_alt</span>
-          </div>
+      <div onclick="openServiceModal('tires')" class="service-card p-10 rounded-[2rem] cursor-pointer group">
+        <div class="icon-box w-16 h-16 bg-zinc-100 rounded-2xl flex items-center justify-center text-zinc-900 mb-8 transition-all duration-500">
+          <span class="material-symbols-outlined text-3xl">tire_repair</span>
+        </div>
+        <h4 class="text-2xl font-black text-zinc-900 mb-4">Neumáticos</h4>
+        <p class="text-zinc-600 leading-relaxed mb-8">Sustitución, equilibrado y alineación 3D para un agarre perfecto en cualquier asfalto.</p>
+        <div class="flex items-center gap-2 text-primary font-black text-xs uppercase tracking-widest">
+          Ver detalles
+          <span class="material-symbols-outlined text-sm group-hover:translate-x-2 transition-transform">arrow_right_alt</span>
         </div>
       </div>
     </div>
@@ -275,60 +221,38 @@
 </section>
 
 <!-- ═══════════════════════════════════════════
-     EXPERIENCE / ABOUT
+     ABOUT / TRUST (High Contrast)
 ════════════════════════════════════════════ -->
-<section id="experiencia" class="py-24 bg-zinc-950 text-white overflow-hidden relative">
-  <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+<section id="experiencia" class="py-24 bg-zinc-950 text-white overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-      <div class="relative">
-        <div class="absolute -top-20 -left-20 w-64 h-64 bg-primary/20 rounded-full blur-[100px]"></div>
-        <h4 class="text-primary font-bold uppercase tracking-[0.3em] text-xs mb-6">Nuestra Filosofía</h4>
-        <h2 class="font-headline text-4xl md:text-6xl font-black tracking-tighter mb-8 leading-tight">
-          Pasión por la <span class="text-primary">Perfección</span> Mecánica.
-        </h2>
-        <div class="space-y-8">
-          <div class="flex gap-6">
-            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-              <span class="material-symbols-outlined">verified_user</span>
-            </div>
-            <div>
-              <h4 class="text-xl font-bold mb-2">Transparencia Radical</h4>
-              <p class="text-zinc-400 text-sm leading-relaxed">Te explicamos cada reparación y te mostramos las piezas sustituidas. Sin sorpresas en la factura.</p>
-            </div>
+      <div>
+        <h2 class="text-xs font-black uppercase tracking-[0.4em] text-primary mb-8">Por qué confiar en nosotros</h2>
+        <h3 class="text-4xl md:text-6xl font-black tracking-tighter mb-10 leading-tight">Expertos en lo que hacemos, claros en lo que decimos.</h3>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
+          <div>
+            <h4 class="text-primary font-black text-lg mb-4">Transparencia</h4>
+            <p class="text-zinc-400 text-sm leading-relaxed">Mostramos las piezas sustituidas y explicamos cada intervención. Honestidad garantizada.</p>
           </div>
-          <div class="flex gap-6">
-            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-              <span class="material-symbols-outlined">precision_manufacturing</span>
-            </div>
-            <div>
-              <h4 class="text-xl font-bold mb-2">Maquinaria de Vanguardia</h4>
-              <p class="text-zinc-400 text-sm leading-relaxed">Invertimos constantemente en equipos de diagnosis de última generación para todas las marcas.</p>
-            </div>
+          <div>
+            <h4 class="text-primary font-black text-lg mb-4">Certificación</h4>
+            <p class="text-zinc-400 text-sm leading-relaxed">Trabajamos bajo estándares de primer nivel con recambios homologados por fabricantes.</p>
+          </div>
+          <div>
+            <h4 class="text-primary font-black text-lg mb-4">Puntualidad</h4>
+            <p class="text-zinc-400 text-sm leading-relaxed">Respetamos los plazos acordados. Tu tiempo es tan importante como tu vehículo.</p>
+          </div>
+          <div>
+            <h4 class="text-primary font-black text-lg mb-4">Cercanía</h4>
+            <p class="text-zinc-400 text-sm leading-relaxed">Trato familiar en Las Rozas. Somos tu taller de barrio con tecnología de concesionario.</p>
           </div>
         </div>
       </div>
-
-      <div class="relative lg:pl-10">
-        <div class="grid grid-cols-2 gap-4">
-          <div class="space-y-4 pt-12">
-            <div class="aspect-[3/4] rounded-3xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
-               <img src="https://images.unsplash.com/photo-1486006396193-47a73493b357?q=80&w=600" alt="Work" class="w-full h-full object-cover">
-            </div>
-            <div class="bg-primary p-8 rounded-3xl">
-               <div class="text-4xl font-black font-headline">15+</div>
-               <div class="text-[10px] uppercase font-bold tracking-widest mt-2">Años en Las Rozas</div>
-            </div>
-          </div>
-          <div class="space-y-4">
-            <div class="bg-zinc-800 p-8 rounded-3xl">
-               <div class="text-4xl font-black font-headline">5000+</div>
-               <div class="text-[10px] uppercase font-bold tracking-widest mt-2">Vehículos Reparados</div>
-            </div>
-            <div class="aspect-[3/4] rounded-3xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
-               <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=600" alt="Car" class="w-full h-full object-cover">
-            </div>
-          </div>
-        </div>
+      
+      <div class="relative">
+        <div class="bg-primary/20 aspect-square rounded-full absolute inset-0 blur-[100px] -z-10"></div>
+        <img src="https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?q=80&w=1000" alt="Workshop Tooling" class="rounded-[3rem] shadow-2xl border-4 border-white/10">
       </div>
     </div>
   </div>
@@ -337,43 +261,37 @@
 <!-- ═══════════════════════════════════════════
      CONTACT / LOCATION
 ════════════════════════════════════════════ -->
-<section id="contacto" class="py-24 bg-surface relative">
-  <div class="max-w-7xl mx-auto px-6 md:px-12">
-    <div class="bg-zinc-50 rounded-[3rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row border border-zinc-100">
-      <div class="lg:w-1/2 p-10 md:p-16">
-        <h2 class="font-headline text-4xl font-black tracking-tighter text-secondary mb-8">¿Hablamos de tu coche?</h2>
+<section id="contacto" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="bg-zinc-50 rounded-[3rem] overflow-hidden border border-zinc-200 flex flex-col lg:flex-row">
+      <div class="lg:w-1/2 p-12 md:p-20">
+        <h2 class="text-4xl font-black tracking-tighter text-zinc-900 mb-10">Visítanos hoy mismo.</h2>
         <div class="space-y-10">
-          <div class="flex items-start gap-6">
-            <div class="w-14 h-14 bg-white rounded-2xl shadow-lg flex items-center justify-center text-primary flex-shrink-0">
-              <span class="material-symbols-outlined text-3xl">location_on</span>
-            </div>
+          <div class="flex gap-6">
+            <span class="material-symbols-outlined text-primary text-3xl">location_on</span>
             <div>
-              <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-2">Nuestra Ubicación</h4>
-              <p class="text-lg font-bold text-secondary">C. Sofía, 4, Európolis<br>28232 Las Rozas de Madrid</p>
+              <h4 class="font-black text-zinc-900 mb-1">Ubicación</h4>
+              <p class="text-zinc-600">C. Sofía, 4, Európolis, 28232 Las Rozas de Madrid</p>
             </div>
           </div>
-          <div class="flex items-start gap-6">
-            <div class="w-14 h-14 bg-white rounded-2xl shadow-lg flex items-center justify-center text-primary flex-shrink-0">
-              <span class="material-symbols-outlined text-3xl">schedule</span>
-            </div>
+          <div class="flex gap-6">
+            <span class="material-symbols-outlined text-primary text-3xl">schedule</span>
             <div>
-              <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-2">Horario Ininterrumpido</h4>
-              <p class="text-lg font-bold text-secondary">Lunes a Viernes<br>09:00 — 18:00</p>
+              <h4 class="font-black text-zinc-900 mb-1">Horario</h4>
+              <p class="text-zinc-600">Lunes a Viernes: 09:00 — 18:00 (Ininterrumpido)</p>
             </div>
           </div>
-          <div class="pt-8 border-t border-zinc-200">
-            <a href="tel:696103730" class="w-full bg-secondary text-white py-6 rounded-2xl font-black text-xl flex items-center justify-center gap-4 hover:bg-primary transition-all shadow-xl active:scale-95">
-              <span class="material-symbols-outlined text-3xl">call</span>
+          <div class="pt-10 border-t border-zinc-200">
+            <a href="tel:696103730" class="text-3xl font-black text-zinc-900 hover:text-primary transition-colors flex items-center gap-4">
               696 10 37 30
             </a>
           </div>
         </div>
       </div>
-      <div class="lg:w-1/2 min-h-[400px] relative">
+      <div class="lg:w-1/2 min-h-[400px]">
         <iframe 
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3034.46467475143!2d-3.899315523438287!3d40.48710785199653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd419bc700000001%3A0x67399479b187515!2sAuto%20Solutions!5e0!3m2!1ses!2ses!4v1714480000000!5m2!1ses!2ses" 
-          class="absolute inset-0 w-full h-full grayscale contrast-125 opacity-80" 
-          style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          class="w-full h-full border-0" allowfullscreen="" loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -382,74 +300,52 @@
 <!-- ═══════════════════════════════════════════
      FOOTER
 ════════════════════════════════════════════ -->
-<footer class="bg-zinc-950 pt-24 pb-12 text-zinc-500">
-  <div class="max-w-7xl mx-auto px-6 md:px-12">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
-      <div class="md:col-span-2">
-        <a href="#" class="flex items-center gap-3 mb-8">
-          <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white">
-            <span class="material-symbols-outlined font-bold">handyman</span>
-          </div>
-          <span class="text-2xl font-black tracking-tighter text-white font-headline uppercase">Auto Solutions</span>
-        </a>
-        <p class="max-w-sm text-lg leading-relaxed text-zinc-400">
-          Transformando el mantenimiento automotriz a través de la excelencia técnica y la honestidad total.
-        </p>
+<footer class="bg-white border-t border-zinc-200 py-16">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-10">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 bg-zinc-900 rounded-lg flex items-center justify-center text-white">
+          <span class="material-symbols-outlined text-sm font-bold">handyman</span>
+        </div>
+        <span class="text-lg font-black tracking-tighter uppercase">Auto Solutions</span>
       </div>
-      <div>
-        <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-8">Legal</h4>
-        <ul class="space-y-4 text-sm font-medium">
-          <li><a href="./aviso-legal.html" class="hover:text-primary transition-colors">Aviso Legal</a></li>
-          <li><a href="./privacidad.html" class="hover:text-primary transition-colors">Privacidad</a></li>
-          <li><a href="./politica-de-cookies.html" class="hover:text-primary transition-colors">Cookies</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-8">Navegación</h4>
-        <ul class="space-y-4 text-sm font-medium">
-          <li><a href="#servicios" class="hover:text-primary transition-colors">Servicios</a></li>
-          <li><a href="#experiencia" class="hover:text-primary transition-colors">Nosotros</a></li>
-          <li><a href="#contacto" class="hover:text-primary transition-colors">Ubicación</a></li>
-        </ul>
+      
+      <div class="flex gap-10 text-xs font-bold uppercase tracking-widest text-zinc-500">
+        <a href="./aviso-legal.html" class="hover:text-primary transition-colors">Aviso Legal</a>
+        <a href="./privacidad.html" class="hover:text-primary transition-colors">Privacidad</a>
+        <a href="./politica-de-cookies.html" class="hover:text-primary transition-colors">Cookies</a>
       </div>
     </div>
-    <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-      <p class="text-xs font-bold tracking-widest uppercase">© 2026 Auto Solutions Car Service. Todos los derechos reservados.</p>
-      <div class="flex gap-6">
-        <span class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all cursor-pointer">
-          <svg class="w-4 h-4 fill-current text-white" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.919-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </span>
-      </div>
+    <div class="mt-10 pt-10 border-t border-zinc-100 text-center">
+      <p class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">© 2026 Auto Solutions Car Service. Calidad y seguridad garantizada.</p>
     </div>
   </div>
 </footer>
 
 <!-- ═══════════════════════════════════════════
-     COMPONENTS (Modals, etc.)
+     MOBILE BOTTOM BAR (iOs Style)
 ════════════════════════════════════════════ -->
-
-<!-- WhatsApp Floating -->
-<a href="https://wa.me/34696103730" class="fixed bottom-8 right-8 z-[100] bg-whatsapp text-white w-16 h-16 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all group overflow-hidden">
-  <span class="material-symbols-outlined text-4xl">chat</span>
-  <span class="absolute right-full mr-4 bg-white text-secondary px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity shadow-xl">¿Necesitas ayuda?</span>
-</a>
-
-<!-- Mobile Bottom Nav -->
-<nav class="md:hidden fixed bottom-0 left-0 w-full grid grid-cols-2 bg-secondary z-50 p-2 gap-2 glass-dark" id="bottom-nav">
-  <button onclick="openBooking()" class="bg-primary text-white py-4 rounded-2xl font-black text-xs tracking-widest flex flex-col items-center gap-1">
-    <span class="material-symbols-outlined">calendar_month</span>
-    PEDIR CITA
-  </button>
-  <a href="https://wa.me/34696103730" class="bg-zinc-800 text-white py-4 rounded-2xl font-black text-xs tracking-widest flex flex-col items-center gap-1 no-underline">
-    <span class="material-symbols-outlined text-whatsapp">chat</span>
-    WHATSAPP
-  </a>
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-[100] p-4 glass-dark-nav" style="background: rgba(255,255,255,0.8); backdrop-filter: blur(20px);">
+  <div class="bg-zinc-900 rounded-2xl p-2 grid grid-cols-2 gap-2 shadow-2xl">
+    <button onclick="openBooking()" class="bg-primary text-white py-4 rounded-xl font-black text-[10px] tracking-widest flex items-center justify-center gap-2">
+      <span class="material-symbols-outlined text-sm">calendar_month</span>
+      PEDIR CITA
+    </button>
+    <a href="https://wa.me/34696103730" class="bg-zinc-800 text-white py-4 rounded-xl font-black text-[10px] tracking-widest flex items-center justify-center gap-2 no-underline">
+      <span class="material-symbols-outlined text-whatsapp text-sm">chat</span>
+      WHATSAPP
+    </a>
+  </div>
 </nav>
 
+<!-- ═══════════════════════════════════════════
+     COMPONENTS (Modals)
+════════════════════════════════════════════ -->
+
 <!-- Service Modal -->
-<div id="service-modal" class="modal-overlay fixed inset-0 z-[110] glass-dark flex items-center justify-center p-6">
-  <div class="modal-sheet bg-white rounded-[2.5rem] max-w-2xl w-full p-8 md:p-12 relative shadow-2xl">
-    <button onclick="closeServiceModal()" class="absolute top-6 right-6 text-zinc-400 hover:text-secondary transition-colors">
+<div id="service-modal" class="modal-overlay fixed inset-0 z-[110] bg-zinc-900/40 backdrop-blur-md flex items-center justify-center p-6">
+  <div class="modal-sheet bg-white rounded-[2.5rem] max-w-2xl w-full p-10 relative shadow-2xl">
+    <button onclick="closeServiceModal()" class="absolute top-6 right-6 text-zinc-400 hover:text-zinc-900 transition-colors">
       <span class="material-symbols-outlined text-3xl">close</span>
     </button>
     <div id="service-modal-content"></div>
@@ -457,41 +353,38 @@
 </div>
 
 <!-- Booking Modal -->
-<div id="booking-modal" class="modal-overlay fixed inset-0 z-[120] glass-dark flex items-center justify-center p-4">
+<div id="booking-modal" class="modal-overlay fixed inset-0 z-[120] bg-zinc-900/60 backdrop-blur-md flex items-center justify-center p-4">
   <div class="modal-sheet bg-white rounded-[2.5rem] max-w-2xl w-full shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
-    <div class="bg-primary p-8 text-white flex justify-between items-center">
-      <div class="flex items-center gap-4">
-        <span class="material-symbols-outlined text-4xl">calendar_month</span>
-        <h3 class="font-headline text-2xl font-black">Agenda tu Cita</h3>
-      </div>
+    <div class="bg-zinc-900 p-8 text-white flex justify-between items-center">
+      <h3 class="text-2xl font-black tracking-tighter">Agenda tu Cita</h3>
       <button onclick="closeBooking()" class="text-white/50 hover:text-white transition-colors">
         <span class="material-symbols-outlined text-3xl">close</span>
       </button>
     </div>
-    <div class="p-8 overflow-y-auto scroll-hide">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="p-8 overflow-y-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
         <div>
-           <label class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-4 block">1. Elige Fecha</label>
-           <div id="calendar-container" class="bg-zinc-50 p-6 rounded-3xl border border-zinc-100">
+           <label class="text-[10px] font-black uppercase tracking-widest text-zinc-400 mb-6 block">1. Selecciona Fecha</label>
+           <div class="bg-zinc-50 p-6 rounded-3xl border border-zinc-200">
              <div class="flex justify-between items-center mb-6">
-               <span id="cal-month-label" class="font-black text-secondary"></span>
+               <span id="cal-month-label" class="font-black text-zinc-900"></span>
                <div class="flex gap-2">
                  <button onclick="changeMonth(-1)" class="w-8 h-8 rounded-lg hover:bg-zinc-200 flex items-center justify-center"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
                  <button onclick="changeMonth(1)" class="w-8 h-8 rounded-lg hover:bg-zinc-200 flex items-center justify-center"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
                </div>
              </div>
-             <div class="grid grid-cols-7 gap-1 text-[10px] font-black text-zinc-300 text-center mb-2">
+             <div class="grid grid-cols-7 gap-1 text-[10px] font-black text-zinc-300 text-center mb-4">
                <div>L</div><div>M</div><div>M</div><div>J</div><div>V</div><div>S</div><div>D</div>
              </div>
              <div id="cal-grid" class="grid grid-cols-7 gap-1"></div>
            </div>
         </div>
         <div>
-           <label class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-4 block">2. Elige Hora</label>
+           <label class="text-[10px] font-black uppercase tracking-widest text-zinc-400 mb-6 block">2. Horarios disponibles</label>
            <div id="time-slots" class="grid grid-cols-2 gap-3"></div>
-           <div class="mt-10">
-             <button onclick="confirmBooking()" id="confirm-btn" class="w-full bg-primary text-white py-5 rounded-2xl font-black text-sm tracking-widest uppercase shadow-xl hover:scale-105 active:scale-95 transition-all">
-               Confirmar Ahora
+           <div class="mt-12">
+             <button onclick="confirmBooking()" class="w-full bg-primary text-white py-5 rounded-2xl font-black text-sm tracking-widest uppercase shadow-xl hover:bg-primary-dark transition-all">
+               Confirmar Cita
              </button>
            </div>
         </div>
@@ -501,57 +394,33 @@
 </div>
 
 <script>
-  // Intersection Observer for scroll animations
-  const observerOptions = { threshold: 0.1 };
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-      }
-    });
-  }, observerOptions);
-
-  document.querySelectorAll('.section-reveal').forEach(el => observer.observe(el));
-
-  // Header scroll effect
-  window.addEventListener('scroll', () => {
-    const header = document.getElementById('main-header');
-    if (window.scrollY > 100) {
-      header.classList.remove('py-4');
-      header.classList.add('py-2');
-    } else {
-      header.classList.add('py-4');
-      header.classList.remove('py-2');
-    }
-  });
-
-  // Modals & Logic (Similar to index but with new IDs/Classes)
+  // Services Data
   const servicesData = {
-    oil:     { title: "Mecánica Rápida", icon: "oil_barrel", desc: "Mantenimiento preventivo de alta precisión. Utilizamos lubricantes sintéticos premium y filtros originales para maximizar la vida útil de tu motor.", features: ["Aceite Long Life", "Filtros certificados", "Reseteo de mantenimiento", "Revisión de 25 puntos"] },
-    brakes:  { title: "Sistema de Frenos", icon: "album", desc: "Seguridad sin compromisos. Inspección computarizada y sustitución de componentes con garantía total de frenado.", features: ["Pastillas cerámicas", "Líquido de frenos DOT 4/5.1", "Diagnosis ABS/ESP", "Rectificado de discos"] },
-    tires:   { title: "Neumáticos 3D", icon: "tire_repair", desc: "Máximo agarre y control. Alineación por láser y equilibrado dinámico para evitar vibraciones y desgaste irregular.", features: ["Alineación 3D", "Equilibrado electrónico", "Válvulas nuevas", "Inflado con Nitrógeno"] }
+    oil: { title: "Mecánica Rápida", icon: "oil_barrel", desc: "Revisiones completas para mantener tu motor en perfecto estado. Cambios de aceite premium y filtros certificados.", features: ["Aceite sintético", "Filtro de aire y aceite", "Reset de avisos", "Revisión de niveles"] },
+    brakes: { title: "Seguridad y Frenos", icon: "album", desc: "Especialistas en sistemas de frenado. Inspeccionamos pastillas, discos y líquido de frenos.", features: ["Pastillas de freno", "Discos de freno", "Líquido de frenos", "Diagnosis ABS"] },
+    tires: { title: "Neumáticos", icon: "tire_repair", desc: "Seguridad total en el asfalto. Trabajamos con las mejores marcas y alineación por ordenador.", features: ["Montaje y equilibrado", "Alineación 3D", "Inflado con nitrógeno", "Válvulas nuevas"] }
   };
 
   function openServiceModal(key) {
     const d = servicesData[key];
     document.getElementById('service-modal-content').innerHTML = `
       <div class="flex items-center gap-6 mb-8">
-        <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary">
-          <span class="material-symbols-outlined text-4xl">${d.icon}</span>
+        <div class="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center">
+          <span class="material-symbols-outlined text-3xl">${d.icon}</span>
         </div>
-        <h3 class="font-headline text-3xl font-black text-secondary">${d.title}</h3>
+        <h4 class="text-3xl font-black tracking-tighter text-zinc-900">${d.title}</h4>
       </div>
-      <p class="text-zinc-500 text-lg leading-relaxed mb-10">${d.desc}</p>
+      <p class="text-zinc-600 text-lg leading-relaxed mb-10">${d.desc}</p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
-        ${d.features.map(f => `<div class="flex items-center gap-3 font-bold text-secondary text-sm"><span class="material-symbols-outlined text-primary">check_circle</span>${f}</div>`).join('')}
+        ${d.features.map(f => `<div class="flex items-center gap-3 font-bold text-zinc-900 text-sm"><span class="material-symbols-outlined text-primary text-xl">check_circle</span>${f}</div>`).join('')}
       </div>
-      <button onclick="closeServiceModal(); openBooking('${d.title}')" class="w-full btn-primary uppercase tracking-widest text-sm">Reservar este servicio</button>
+      <button onclick="closeServiceModal(); openBooking('${d.title}')" class="w-full bg-zinc-900 text-white py-5 rounded-2xl font-black text-sm tracking-widest uppercase hover:bg-primary transition-all">RESERVAR ESTE SERVICIO</button>
     `;
     document.getElementById('service-modal').classList.add('active');
   }
 
   function closeServiceModal() { document.getElementById('service-modal').classList.remove('active'); }
-  
+
   // Booking Logic
   let calYear, calMonth, selectedDate, selectedTime;
   const TIME_SLOTS = ['09:00','10:30','12:00','13:30','16:00','17:30'];
@@ -579,23 +448,26 @@
       const isPast = date < new Date().setHours(0,0,0,0);
       const isWeekend = date.getDay() === 0 || date.getDay() === 6;
       const isSelected = selectedDate && date.toDateString() === selectedDate.toDateString();
-      grid.innerHTML += `<button onclick="!${isPast || isWeekend} && selectDate(${d})" class="aspect-square flex items-center justify-center rounded-xl text-sm font-bold ${isPast || isWeekend ? 'text-zinc-200 cursor-default' : isSelected ? 'bg-primary text-white' : 'hover:bg-zinc-100 text-secondary'}">${d}</button>`;
+      grid.innerHTML += `<button onclick="!${isPast || isWeekend} && selectDate(${d})" class="aspect-square flex items-center justify-center rounded-xl text-xs font-black ${isPast || isWeekend ? 'text-zinc-200' : isSelected ? 'bg-primary text-white' : 'hover:bg-zinc-100 text-zinc-900'}">${d}</button>`;
     }
   }
 
   function changeMonth(delta) { calMonth += delta; renderCalendar(); }
   function selectDate(d) { selectedDate = new Date(calYear, calMonth, d); renderCalendar(); }
   function renderTimeSlots() {
-    document.getElementById('time-slots').innerHTML = TIME_SLOTS.map(t => `<button onclick="selectTime('${t}')" class="py-4 border-2 rounded-2xl font-black text-xs tracking-widest uppercase transition-all ${t === selectedTime ? 'border-primary bg-primary/5 text-primary' : 'border-zinc-100 text-zinc-400 hover:border-zinc-200'}">${t}</button>`).join('');
+    document.getElementById('time-slots').innerHTML = TIME_SLOTS.map(t => `<button onclick="selectTime('${t}')" class="py-4 border-2 rounded-2xl font-black text-[10px] tracking-widest uppercase transition-all ${t === selectedTime ? 'border-primary bg-primary/5 text-primary' : 'border-zinc-200 text-zinc-400 hover:border-zinc-300'}">${t}</button>`).join('');
   }
   function selectTime(t) { selectedTime = t; renderTimeSlots(); }
 
   function openBooking() { document.getElementById('booking-modal').classList.add('active'); initCalendar(); }
   function closeBooking() { document.getElementById('booking-modal').classList.remove('active'); }
-  function confirmBooking() { alert('✅ Cita solicitada con éxito. Te llamaremos en breve.'); closeBooking(); }
+  function confirmBooking() { alert('✅ Cita solicitada. Te llamaremos pronto.'); closeBooking(); }
 
-  // Init
   initCalendar();
+
+  function toggleMenu() {
+    // Menu mobile logic
+  }
 </script>
 </body>
 </html>
